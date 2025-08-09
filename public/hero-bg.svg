@@ -1,0 +1,35 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0fdf4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dcfce7;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grassGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#bbf7d0;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#86efac;stop-opacity:0.2" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Sky background -->
+  <rect width="1200" height="400" fill="url(#skyGradient)"/>
+  
+  <!-- Rolling hills -->
+  <path d="M0 300 Q300 250 600 280 T1200 300 L1200 600 L0 600 Z" fill="url(#grassGradient)"/>
+  <path d="M0 350 Q400 320 800 340 T1200 350 L1200 600 L0 600 Z" fill="url(#grassGradient)" opacity="0.5"/>
+  
+  <!-- Trees silhouettes -->
+  <ellipse cx="150" cy="320" rx="20" ry="40" fill="#22c55e" opacity="0.2"/>
+  <ellipse cx="180" cy="310" rx="15" ry="35" fill="#22c55e" opacity="0.15"/>
+  <ellipse cx="950" cy="330" rx="25" ry="45" fill="#22c55e" opacity="0.2"/>
+  <ellipse cx="980" cy="325" rx="18" ry="38" fill="#22c55e" opacity="0.15"/>
+  
+  <!-- Golf flag -->
+  <line x1="1000" y1="340" x2="1000" y2="300" stroke="#059669" stroke-width="2" opacity="0.4"/>
+  <path d="M1000 300 L1020 310 L1000 320 Z" fill="#22c55e" opacity="0.4"/>
+  
+  <!-- Subtle clouds -->
+  <ellipse cx="200" cy="100" rx="40" ry="15" fill="white" opacity="0.3"/>
+  <ellipse cx="220" cy="95" rx="30" ry="12" fill="white" opacity="0.3"/>
+  <ellipse cx="800" cy="80" rx="35" ry="18" fill="white" opacity="0.2"/>
+  <ellipse cx="820" cy="75" rx="25" ry="14" fill="white" opacity="0.2"/>
+</svg>

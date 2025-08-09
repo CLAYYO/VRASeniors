@@ -1,0 +1,51 @@
+---
+export interface Props {
+  name: string;
+  filename: string;
+  year?: string;
+  showYear?: boolean;
+  className?: string;
+}
+
+const { name, filename, year, showYear = true, className = '' } = Astro.props;
+
+// Construct the PDF URL - assuming PDFs are in public/pdfs/
+const pdfUrl = `/pdfs/${filename}`;
+---
+
+<button
+  type="button"
+  onclick={`openPdfModal('${pdfUrl}', '${name}')`}
+  class={`inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors ${className}`}
+  aria-label={`Open ${name} PDF`}
+>
+  <!-- PDF Icon -->
+  <svg class="h-4 w-4 mr-2 text-red-500" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd" />
+  </svg>
+  
+  <span class="truncate">{name}</span>
+  
+  {showYear && year && (
+    <span class="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">
+      {year}
+    </span>
+  )}
+  
+  <!-- PDF Badge -->
+  <span class="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800">
+    PDF
+  </span>
+</button>
+
+<!-- Alternative link for accessibility/fallback -->
+<noscript>
+  <a 
+    href={pdfUrl} 
+    target="_blank" 
+    rel="noopener noreferrer"
+    class={`inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 ${className}`}
+  >
+    {name} (PDF)
+  </a>
+</noscript>

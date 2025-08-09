@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SidebarNav from '../../components/SidebarNav.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { getContentBySection, getBreadcrumbs } from '../../utils/data';
+
+// Get administration content
+const administrationContent = await getContentBySection('administration');
+
+// Set up breadcrumbs
+const breadcrumbs = getBreadcrumbs('administration');
+
+const title = 'Administration - Vale Royal Abbey Golf Club Seniors';
+const description = 'Administrative information and governance details for the Vale Royal Abbey Golf Club Seniors Section.';
+---
+
+<BaseLayout title={title} description={description}>
+  <Breadcrumbs breadcrumbs={breadcrumbs} />
+  
+  <div class="flex min-h-screen bg-gray-50">
+    <SidebarNav section="administration" sectionContent={administrationContent} />
+    
+    <main class="flex-1" role="main">
+      <PageHeader 
+        title="Administration" 
+        description="Governance, documentation, and administrative information for our seniors section"
+      />
+      
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {administrationContent.map(item => (
+            <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200">
+              <div class="p-6">
+                <h2 class="text-xl font-semibold text-gray-900 mb-3">
+                  <a href={`/administration/${item.slug}`} class="hover:text-green-600 transition-colors">
+                    {item.title.replace('Administration – ', '')}
+                  </a>
+                </h2>
+                
+                {item.content && (
+                  <div class="text-gray-600 text-sm mb-4 line-clamp-4" set:html={item.content.substring(0, 200) + '...'} />
+                )}
+                
+                {item.pdfs && item.pdfs.length > 0 && (
+                  <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <svg class="h-4 w-4 mr-1 text-red-500" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
+                    </svg>
+                    {item.pdfs.length} document{item.pdfs.length > 1 ? 's' : ''}
+                  </div>
+                )}
+                
+                <a 
+                  href={`/administration/${item.slug}`}
+                  class="inline-flex items-center text-green-600 hover:text-green-700 font-medium text-sm transition-colors"
+                >
+                  View details
+                  <svg class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {administrationContent.length === 0 && (
+          <div class="text-center py-12">
+            <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <h3 class="mt-2 text-sm font-medium text-gray-900">No administration content available</h3>
+            <p class="mt-1 text-sm text-gray-500">Administration content will appear here when available.</p>
+          </div>
+        )}
+      </div>
+    </main>
+  </div>
+</BaseLayout>

@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import PageHeader from '../components/PageHeader.astro';
+import PdfLink from '../components/PdfLink.astro';
+import { getContentByPage, getBreadcrumbs, sanitizeContent } from '../utils/data';
+
+// Get Hall of Fame content
+const hallOfFameContent = await getContentByPage('hall_of_fame');
+
+// Set up breadcrumbs
+const breadcrumbs = getBreadcrumbs('hall-of-fame');
+
+const title = 'Hall of Fame - Vale Royal Abbey Golf Club Seniors';
+const description = hallOfFameContent?.content ? sanitizeContent(hallOfFameContent.content).substring(0, 160) : 'Hall of Fame for the Vale Royal Abbey Golf Club Seniors Section.';
+
+// Group PDFs by trophy type (if available)
+const trophyGroups = hallOfFameContent?.pdfs ? hallOfFameContent.pdfs.reduce((groups, pdf) => {
+  // Try to extract trophy name from PDF name
+  const trophyName = pdf.name.includes('LMS') ? 'LMS Trophy' :
+                   pdf.name.includes('Tuckley') ? 'Tuckley Trophy' :
+                   pdf.name.includes('Diamond') ? 'Diamond Plate' :
+                   pdf.name.includes('Rider') ? 'Rider Cup' :
+                   pdf.name.includes('Captain') ? 'Captain\'s Prize' :
+                   'Other Awards';
+  
+  if (!groups[trophyName]) {
+    groups[trophyName] = [];
+  }
+  groups[trophyName].push(pdf);
+  return groups;
+}, {} as Record<string, typeof hallOfFameContent.pdfs>) : {};
+---
+
+<BaseLayout title={title} description={description}>
+  <Breadcrumbs breadcrumbs={breadcrumbs} />
+  
+  <main role="main">
+    <PageHeader 
+      title="Hall of Fame" 
+      description="Celebrating our champions and award winners"
+    />
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {hallOfFameContent?.content && (
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 mb-8">
+          <div class="prose prose-lg max-w-none" set:html={hallOfFameContent.content} />
+        </div>
+      )}
+      
+      {Object.keys(trophyGroups).length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {Object.entries(trophyGroups).map(([trophyName, pdfs]) => (
+            <div class="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
+              <div class="bg-gradient-to-r from-yellow-400 to-yellow-600 px-6 py-4">
+                <div class="flex items-center">
+                  <svg class="h-8 w-8 text-yellow-100 mr-3" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10 2L3 7v11a1 1 0 001 1h3a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1h3a1 1 0 001-1V7l-7-5zM6 16v-4h8v4H6z" clip-rule="evenodd" />
+                  </svg>
+                  <h2 class="text-xl font-bold text-white">{trophyName}</h2>
+                </div>
+              </div>
+              
+              <div class="p-6">
+                <div class="space-y-3">
+                  {pdfs.map(pdf => (
+                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                      <div class="flex-1 min-w-0">
+                        <p class="text-sm font-medium text-gray-900 truncate">
+                          {pdf.name}
+                        </p>
+                        {pdf.year && (
+                          <p class="text-xs text-gray-500">Year: {pdf.year}</p>
+                        )}
+                      </div>
+                      <div class="ml-3">
+                        <PdfLink 
+                          name={pdf.name} 
+                          filename={pdf.filename} 
+                          year={pdf.year}
+                          showYear={false}
+                          className="text-xs px-2 py-1"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+                <div class="mt-4 pt-4 border-t border-gray-200">
+                  <p class="text-sm text-gray-500">
+                    {pdfs.length} record{pdfs.length > 1 ? 's' : ''} available
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-12">
+          <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+          </svg>
+          <h3 class="mt-2 text-sm font-medium text-gray-900">No awards available</h3>
+          <p class="mt-1 text-sm text-gray-500">Hall of Fame records will appear here when available.</p>
+        </div>
+      )}
+      
+      {/* Quick navigation back to sections */}
+      <div class="mt-12 bg-green-50 rounded-lg p-6">
+        <h3 class="text-lg font-medium text-green-900 mb-4">Explore More</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <a href="/golf" class="block p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border border-green-200">
+            <h4 class="font-medium text-green-900">Golf Activities</h4>
+            <p class="text-sm text-green-700 mt-1">Competitions and matches</p>
+          </a>
+          <a href="/portfolio" class="block p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border border-green-200">
+            <h4 class="font-medium text-green-900">Portfolio</h4>
+            <p class="text-sm text-green-700 mt-1">Management information</p>
+          </a>
+          <a href="/administration" class="block p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border border-green-200">
+            <h4 class="font-medium text-green-900">Administration</h4>
+            <p class="text-sm text-green-700 mt-1">Governance and documents</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  /* Custom styles for content formatting */
+  .prose ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+  }
+  
+  .prose ol {
+    list-style-type: decimal;
+    margin-left: 1.5rem;
+  }
+  
+  .prose li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .prose p {
+    margin-bottom: 1rem;
+  }
+  
+  .prose h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #1f2937;
+  }
+  
+  .prose h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #1f2937;
+  }
+</style>

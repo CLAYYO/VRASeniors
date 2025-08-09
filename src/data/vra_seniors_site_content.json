@@ -1,0 +1,381 @@
+[
+  {
+    "page": "home",
+    "title": "Seniors Web Site",
+    "content": "Home page of Vale Royal Abbey Golf Club seniors section. It lists categories: Golf (Weekly Competitions, Matches, Knock Outs, Exchange Days, Rider Cup, Friendlies, World Handicap System, WHS Conversion Tables), Portfolio (Introduction, Seniors Benefits, Operating Guidelines, Committee Structure, Inter Club Matches, Seniors Competitions, Financial Operation, Seniors Invitation, Hall of Fame), and Administration (VRA Constitution, Document Tracker, Prize Structure, Annual Meeting Minutes, Photo Gallery). Useful links to other VRA sections, Master Score Board, BRS Booking, The Driver, etc."
+  },
+  {
+    "page": "weekly_competitions",
+    "title": "Weekly Competitions",
+    "content": "The Weekly Competitions page states that competition start sheets are now on BRS. It provides links to documents such as Winter League Table 2019–20, monthly prize lists (October 2020, September 2020), fixtures for 2021–22, a WHS course handicap table, a 14-hole stroke index table and the Seniors general competition conditions.",
+    "pdfs": [
+      {
+        "name": "Winter League Table 2019-20",
+        "filename": "winter-league-table-2019-20.pdf"
+      },
+      {
+        "name": "Monthly Prize Lists October 2020",
+        "filename": "monthly-prize-lists-oct-2020.pdf"
+      },
+      {
+        "name": "Fixtures 2021-22",
+        "filename": "fixtures-2021-22.pdf"
+      },
+      {
+        "name": "WHS Course Handicap Table",
+        "filename": "whs-course-handicap-table.pdf"
+      },
+      {
+        "name": "14-Hole Stroke Index Table",
+        "filename": "14-hole-stroke-index-table.pdf"
+      },
+      {
+        "name": "Seniors General Competition Conditions",
+        "filename": "seniors-general-competition-conditions.pdf"
+      }
+    ]
+  },
+  {
+    "page": "matches",
+    "title": "Inter Club Matches",
+    "content": "This page explains how to enter inter-club matches. It has a table titled 2025 Senior Inter Club Matches listing match dates, clubs, venues and a column showing when entry opens. Entry and team-sheet links allow members to enter their names and view team sheets. The match entry instructions explain the meaning of the columns and that players must pay for match meals and inform the captain if they cannot play.",
+    "pdfs": [
+      {
+        "name": "2025 Senior Inter Club Matches Schedule",
+        "filename": "2025-senior-inter-club-matches.pdf"
+      },
+      {
+        "name": "Match Entry Instructions",
+        "filename": "match-entry-instructions.pdf"
+      }
+    ]
+  },
+  {
+    "page": "knockouts",
+    "title": "Knock Outs",
+    "content": "The Knock Outs page lists the Tuckley Trophy and Diamond Plate knock-out competitions. For each year (2010–2022), buttons open PDF brackets showing the draw and winners (for example the 2021 Tuckley Trophy PDF shows match-ups and declares Mark Patton the winner).",
+    "pdfs": [
+      {
+        "name": "2021 Tuckley Trophy Bracket",
+        "filename": "2021-tuckley-trophy-bracket.pdf"
+      },
+      {
+        "name": "2022 Tuckley Trophy Bracket",
+        "filename": "2022-tuckley-trophy-bracket.pdf"
+      },
+      {
+        "name": "2021 Diamond Plate Bracket",
+        "filename": "2021-diamond-plate-bracket.pdf"
+      },
+      {
+        "name": "2022 Diamond Plate Bracket",
+        "filename": "2022-diamond-plate-bracket.pdf"
+      }
+    ]
+  },
+  {
+    "page": "exchange_days",
+    "title": "Exchange Days",
+    "content": "This page explains that exchange days allow seniors to play at other clubs. A table lists events (e.g., Bramhall on 19 July, Bolton Old Links on 21 August) with columns for entry date, entry sheet and tee-times sheet. Instructions say not to enter before the opening date, to use the entry sheet to add names or view entries, and to use the tee-times sheet to view final times."
+  },
+  {
+    "page": "rider_cup",
+    "title": "Rider Cup (Wrinklies v Crinklies)",
+    "content": "The Rider Cup section provides PDFs of the 2018 Wrinklies v Crinklies competition. The Day 1 PDF lists the order of play, meeting time (8.45 am) and explains that the format is pairs four-ball better-ball match play with 90% handicap difference from the lowest player.",
+    "pdfs": [
+      {
+        "name": "2018 Rider Cup Day 1",
+        "filename": "2018-rider-cup-day-1.pdf"
+      },
+      {
+        "name": "2018 Rider Cup Day 2",
+        "filename": "2018-rider-cup-day-2.pdf"
+      }
+    ]
+  },
+  {
+    "page": "friendlies",
+    "title": "Friendly Matches",
+    "content": "The Friendlies page lists historic friendly matches with clubs such as Bromborough and Lymm. Clicking a match (e.g., Bromborough Away – 12 April 2017) opens a PDF with the roster and match details. The Bromborough PDF shows the match took place on Wednesday 12 April 2017 at Bromborough GC, with an 08:30 meet for a 09:15 tee time and tables of pairings and handicaps.",
+    "pdfs": [
+      {
+        "name": "Bromborough Away - 12 April 2017",
+        "filename": "bromborough-away-12-april-2017.pdf"
+      },
+      {
+        "name": "Lymm Home - 15 June 2017",
+        "filename": "lymm-home-15-june-2017.pdf"
+      }
+    ]
+  },
+  {
+    "page": "whs",
+    "title": "World Handicap System",
+    "content": "Explains that the World Handicap System (WHS) replaced the CONGU system on 2 November 2020. Every golfer now has a Handicap Index (HI) and each course has a slope rating. A course handicap is calculated as HI × (Slope Rating ÷ 113), rounded to the nearest whole number. A playing handicap is then derived from the course handicap by applying a percentage (95% for singles, 90% for four-ball match play, 85% for four-ball stroke play). A table compares old terms (Standard Scratch Score, CSS, Exact Handicap, etc.) with new WHS terms such as Course Rating, Playing Conditions Calculation, Handicap Index and Course Handicap. The page includes links to England Golf's information package and a button leading to conversion tables.",
+    "pdfs": [
+      {
+        "name": "England Golf WHS Information Package",
+        "filename": "england-golf-whs-info-package.pdf"
+      },
+      {
+        "name": "WHS Terms Comparison Table",
+        "filename": "whs-terms-comparison-table.pdf"
+      }
+    ]
+  },
+  {
+    "page": "whs_conversion_tables",
+    "title": "WHS Conversion Tables",
+    "content": "Lists conversion tables for 18-hole and 14-hole rounds. Tables are provided for different tees (white, yellow, red) for gents and ladies, as well as Texas Scrambles and Foursomes & Greensomes. The tables convert Handicap Index values to course and playing handicaps for various formats.",
+    "pdfs": [
+      {
+        "name": "18-Hole Conversion Tables",
+        "filename": "18-hole-conversion-tables.pdf"
+      },
+      {
+        "name": "14-Hole Conversion Tables",
+        "filename": "14-hole-conversion-tables.pdf"
+      },
+      {
+        "name": "Texas Scramble Conversion Tables",
+        "filename": "texas-scramble-conversion-tables.pdf"
+      }
+    ]
+  },
+  {
+    "page": "introduction",
+    "title": "Portfolio – Introduction",
+    "content": "PDF document explaining that the Seniors Section formed when the club opened on 1 October 1998. The qualifying age was originally 50 and later 55. As membership grew, the seniors introduced home-and-away matches, winter and summer leagues, a bottle run at Christmas, gourmet evenings and various trophies. The section has its own website, developed with the support of Ivor Prosser.",
+    "pdfs": [
+      {
+        "name": "Seniors Section History",
+        "filename": "seniors-section-history.pdf"
+      }
+    ]
+  },
+  {
+    "page": "seniors_benefits",
+    "title": "Seniors Section Membership Benefits",
+    "content": "PDF summarising benefits for members over 55. It notes that membership is open to VRAGC members over 55 with a subscription payable each season. Weekly competitions are held on Thursday mornings with prize money for individuals and teams. The section organises inter-club matches, friendlies, an away day, exchange days, seniors invitation day, matches with the ladies, match-play knock-outs and the Rider Cup. Communication is via monthly e-mails and the website. It also lists committee officers such as Acting Chairman/Treasurer Andrew Threlkeld, Secretary Mick Clarke, Match Organiser Trevor Meech and others.",
+    "pdfs": [
+      {
+        "name": "Membership Benefits Summary",
+        "filename": "membership-benefits-summary.pdf"
+      },
+      {
+        "name": "Committee Officers List",
+        "filename": "committee-officers-list.pdf"
+      }
+    ]
+  },
+  {
+    "page": "operating_guidelines",
+    "title": "Operating Guidelines",
+    "content": "Describes aims of the seniors section: to bring like-minded members together, encourage competitive golf, arrange social functions, enhance the club's reputation through matches and operate without conflicting with the Club Constitution. Membership is open to VRAGC members aged 55 plus who pay the subscription. The document outlines the committee structure (chairman, secretary, assistant secretary, match organiser, assistant match organiser, treasurer, assistant treasurer, social secretary), explains competition entry procedures and notes that proposals to change activities must be submitted 14 days before the annual meeting and require a majority vote.",
+    "pdfs": [
+      {
+        "name": "Operating Guidelines Document",
+        "filename": "operating-guidelines.pdf"
+      }
+    ]
+  },
+  {
+    "page": "committee_structure",
+    "title": "Committee Structure and Duties",
+    "content": "A web page with buttons linking to PDFs describing duties of committee members. The Chairman's duties include acting as ambassador, chairing meetings, representing the seniors on the main club committee and having a casting vote. The Treasurer manages receipts and payments, collects subscriptions and competition income, maintains membership lists and presents annual accounts. The Match Organiser publishes the fixture list, selects teams, appoints captains of the day, organises catering and coordinates the away day, seniors invitation and Rider Cup. The Secretary organises committee meetings, produces competition entry sheets and results, keeps records of winners and liaises with the handicap committee. The Assistant Secretary supports the secretary with these tasks.",
+    "pdfs": [
+      {
+        "name": "Chairman Duties",
+        "filename": "chairman-duties.pdf"
+      },
+      {
+        "name": "Treasurer Duties",
+        "filename": "treasurer-duties.pdf"
+      },
+      {
+        "name": "Match Organiser Duties",
+        "filename": "match-organiser-duties.pdf"
+      },
+      {
+        "name": "Secretary Duties",
+        "filename": "secretary-duties.pdf"
+      },
+      {
+        "name": "Assistant Secretary Duties",
+        "filename": "assistant-secretary-duties.pdf"
+      }
+    ]
+  },
+  {
+    "page": "inter_club_matches_portfolio",
+    "title": "Portfolio – Inter Club Matches",
+    "content": "Provides links to annual team results (2008–2019 and 2022–2023) and to the Captain of the Day duties document. The Captain of the Day duties PDF lists responsibilities: ensure players confirm participation and contact reserves, greet visiting teams, finalise team sheets and payments, instruct players on tee colour and handicaps, coordinate meal times, welcome visitors and announce results. The Team Results 2023 PDF contains a table of match results, showing whether the seniors won, lost or drew against each opposing club during the 2023 season.",
+    "pdfs": [
+      {
+        "name": "Captain of the Day Duties",
+        "filename": "captain-of-the-day-duties.pdf"
+      },
+      {
+        "name": "Team Results 2023",
+        "filename": "team-results-2023.pdf"
+      },
+      {
+        "name": "Team Results 2008-2019",
+        "filename": "team-results-2008-2019.pdf"
+      },
+      {
+        "name": "Team Results 2022",
+        "filename": "team-results-2022.pdf"
+      }
+    ]
+  },
+  {
+    "page": "seniors_competitions",
+    "title": "Seniors Competitions",
+    "content": "Offers many competition categories (Seniors Championship, LMS Summer League Trophy, Monthly Medal, Winter League Trophy, Rider Cup, Tuckley Trophy, Diamond Plate, Old Factotums Trophy, Absent Friends Trophy, Fun Comps, Texas Scrambles, etc.) with buttons leading to rules and historical results. The General Conditions of Entry PDF states that competitors must be paid-up members over 55 and that subscriptions must be paid before entry otherwise the player will be disqualified. Entry sheets are posted four weeks ahead, start sheets two weeks ahead, and players must inform partners if they withdraw. Ties in stroke-play competitions are decided by card countback based on the last 9, 6, 3, 4th hole and other criteria.",
+    "pdfs": [
+      {
+        "name": "General Conditions of Entry",
+        "filename": "general-conditions-of-entry.pdf"
+      },
+      {
+        "name": "Seniors Championship Rules",
+        "filename": "seniors-championship-rules.pdf"
+      },
+      {
+        "name": "LMS Trophy Rules",
+        "filename": "lms-trophy-rules.pdf"
+      },
+      {
+        "name": "Monthly Medal Rules",
+        "filename": "monthly-medal-rules.pdf"
+      },
+      {
+        "name": "Historical Results 2020-2024",
+        "filename": "historical-results-2020-2024.pdf"
+      }
+    ]
+  },
+  {
+    "page": "financial_operation",
+    "title": "Financial Operation",
+    "content": "Explains how the seniors section finances competitions. The year is divided into summer and winter sessions with a monthly medal. To cover prizes, members pay a session fee rather than paying for each competition. In 2010 the fees were £30 for summer, £30 for winter, and £3 for the Tuckley Trophy; members playing only part of a season pay £5 per month. Fees are due by 31 March (summer and Tuckley Trophy) or 30 September (winter). The treasurer informs the committee of defaulters, who cannot compete and are disqualified if they do. All running costs are covered by collected fees and the seniors accounts are separate from the main club accounts.",
+    "pdfs": [
+      {
+        "name": "Financial Operation Guidelines",
+        "filename": "financial-operation-guidelines.pdf"
+      },
+      {
+        "name": "Fee Structure 2024",
+        "filename": "fee-structure-2024.pdf"
+      }
+    ]
+  },
+  {
+    "page": "seniors_invitation",
+    "title": "Seniors Invitation",
+    "content": "Describes the annual Seniors Invitation day, usually held on the second Friday in September. Members may bring up to three guests aged 55 or over with competitive handicaps. The entry fee includes a two-course meal. Entries open about four weeks prior via the BRS system and must be paid to the treasurer in advance. Format is 4-ball better-ball Stableford off 90% handicap, using yellow tees. Members enter names and tee times on the master sheet, pay in full by the due date, return cards within 20 minutes of finishing and are responsible for signing in guests. Because the event is popular, a results sheet is provided instead of a formal presentation.",
+    "pdfs": [
+      {
+        "name": "Seniors Invitation Rules",
+        "filename": "seniors-invitation-rules.pdf"
+      },
+      {
+        "name": "2024 Seniors Invitation Results",
+        "filename": "2024-seniors-invitation-results.pdf"
+      }
+    ]
+  },
+  {
+    "page": "hall_of_fame",
+    "title": "Hall of Fame",
+    "content": "Provides buttons to view past captains and winners of trophies including LMS Trophy, Tuckley Trophy, Diamond Plate, Rider Cup, Winter League, Absent Friends Trophy, Old Factotums, Improver of the Year and Special Performances. The Past Captains PDF lists names and years of office, e.g., Michael Neale (2000), Peter Roberts (2001), Trevor Wilkes (2002), Andy Rogerson (2004), Martyn Hall (2006), Derek O'Brien (2007), Lyndon Carthew (2009), John Wooldridge (2012), Terry Hargrove (2013), Michael Clarke (2014), Nigel Wells (2015), Andrew Threlkeld (2016), Derek O'Brien (2017), Ian Brandon (2019), Mark Patton (2020 & 2021), Geoff Anderton (2022) and Mark Haynes (2023).",
+    "pdfs": [
+      {
+        "name": "Past Captains",
+        "filename": "past-captains.pdf"
+      },
+      {
+        "name": "LMS Trophy Winners",
+        "filename": "lms-trophy-winners.pdf"
+      },
+      {
+        "name": "Tuckley Trophy Winners",
+        "filename": "tuckley-trophy-winners.pdf"
+      },
+      {
+        "name": "Diamond Plate Winners",
+        "filename": "diamond-plate-winners.pdf"
+      },
+      {
+        "name": "Rider Cup Winners",
+        "filename": "rider-cup-winners.pdf"
+      },
+      {
+        "name": "Winter League Winners",
+        "filename": "winter-league-winners.pdf"
+      },
+      {
+        "name": "Special Performances",
+        "filename": "special-performances.pdf"
+      }
+    ]
+  },
+  {
+    "page": "vra_constitution",
+    "title": "VRA Constitution",
+    "content": "A 13-page PDF titled 'Constitution and Rules of Vale Royal Abbey Golf Club'. It details the governance of the club, membership categories, rights and responsibilities, committee structures, subscription rules, and procedures for meetings. Revisions have been made multiple times, most recently in November 2021.",
+    "pdfs": [
+      {
+        "name": "VRA Constitution and Rules",
+        "filename": "vra-constitution-and-rules.pdf"
+      }
+    ]
+  },
+  {
+    "page": "document_tracker",
+    "title": "Document Change Tracker",
+    "content": "A document change tracker lists updates made to the seniors portfolio. Entries include the date, file reference, change and author. For example, November 2011 updates note that the seniors committee was renamed, nearest pin prizes were reduced from two to one bottle of wine, Deserving Cause and Improver of the Year were added and a check list for changing rooms introduced. The tracker continues through subsequent years, documenting revisions such as updated winners lists, amended competition formats and new documents.",
+    "pdfs": [
+      {
+        "name": "Document Change Tracker",
+        "filename": "document-change-tracker.pdf"
+      }
+    ]
+  },
+  {
+    "page": "prize_structure",
+    "title": "Prize Structure",
+    "content": "The Annual Competitions Prize Structure table lists entry fees and prizes for major competitions (Tuckley Trophy, Diamond Plate, LMS Trophy, Winter League, Rider Cup, Old Factotums, Absent Friends). For example, the Tuckley Trophy entry fee is £3 with prizes of a trophy/replica and cash for the overall winner, second, third and fourth places. A weekly prize money section details payouts by division for the monthly medal, subsidiary stableford, LMS Trophy and winter league. Additional sections cover prizes for fun competitions, 9-hole and lunch events, the seniors invitation day, away days, exchange days and mixed events with ladies. An April 2025 note states that each division will be balanced by handicap index.",
+    "pdfs": [
+      {
+        "name": "Annual Competitions Prize Structure",
+        "filename": "annual-competitions-prize-structure.pdf"
+      },
+      {
+        "name": "Weekly Prize Money Structure",
+        "filename": "weekly-prize-money-structure.pdf"
+      }
+    ]
+  },
+  {
+    "page": "annual_meeting_minutes",
+    "title": "Annual Meeting Minutes (2024)",
+    "content": "The Seniors Annual Report dated March 28 2024 summarises reports from committee sections presented at the annual meeting. It includes election results for vacant committee posts. The Chairman's report acknowledges the passing of several members, praises the thriving seniors section and thanks volunteers. It notes new committee members David Helm and Paul Williams and commends Secretary Mick Clarke for comprehensive meeting minutes.",
+    "pdfs": [
+      {
+        "name": "Annual Meeting Minutes 2024",
+        "filename": "annual-meeting-minutes-2024.pdf"
+      },
+      {
+        "name": "Seniors Annual Report 2024",
+        "filename": "seniors-annual-report-2024.pdf"
+      }
+    ]
+  },
+  {
+    "page": "photo_gallery",
+    "title": "Photo Gallery",
+    "content": "The photo gallery link points to a Gallery.html page which returns a 404 Not Found error, so no gallery content is available."
+  }
+]

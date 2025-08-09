@@ -1,0 +1,167 @@
+---
+import PdfLink from './PdfLink.astro';
+
+export interface Props {
+  documents: Array<{
+    name: string;
+    filename: string;
+    year?: string;
+  }>;
+  title?: string;
+  showFilters?: boolean;
+  gridView?: boolean;
+}
+
+const { documents, title = "Documents", showFilters = false, gridView = false } = Astro.props;
+
+// Extract unique years for filtering
+const years = [...new Set(documents.map(doc => doc.year).filter(Boolean))].sort((a, b) => 
+  parseInt(b || '0') - parseInt(a || '0')
+);
+---
+
+<div class="bg-white">
+  {title && (
+    <div class="border-b border-gray-200 pb-4 mb-6">
+      <h2 class="text-xl font-semibold text-gray-900">{title}</h2>
+    </div>
+  )}
+  
+  {showFilters && years.length > 0 && (
+    <div class="mb-6 flex flex-wrap gap-4">
+      <div>
+        <label for="doc-year-filter" class="block text-sm font-medium text-gray-700 mb-1">
+          Filter by Year
+        </label>
+        <select 
+          id="doc-year-filter" 
+          class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md"
+        >
+          <option value="">All Years</option>
+          {years.map(year => (
+            <option value={year}>{year}</option>
+          ))}
+        </select>
+      </div>
+    </div>
+  )}
+  
+  {documents.length === 0 ? (
+    <div class="text-center py-8">
+      <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      </svg>
+      <h3 class="mt-2 text-sm font-medium text-gray-900">No documents</h3>
+      <p class="mt-1 text-sm text-gray-500">No documents are available at this time.</p>
+    </div>
+  ) : gridView ? (
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-doc-container>
+      {documents.map(doc => (
+        <div class="doc-item border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow" data-year={doc.year || ''}>
+          <div class="flex items-start justify-between">
+            <div class="flex-1 min-w-0">
+              <h3 class="text-sm font-medium text-gray-900 mb-2 line-clamp-2">
+                {doc.name}
+              </h3>
+              {doc.year && (
+                <p class="text-xs text-gray-500 mb-3">Year: {doc.year}</p>
+              )}
+            </div>
+          </div>
+          <PdfLink 
+            name={doc.name} 
+            filename={doc.filename} 
+            year={doc.year}
+            showYear={false}
+            className="w-full justify-center"
+          />
+        </div>
+      ))}
+    </div>
+  ) : (
+    <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+      <table class="min-w-full divide-y divide-gray-300">
+        <thead class="bg-gray-50">
+          <tr>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Document
+            </th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Year
+            </th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200" data-doc-container>
+          {documents.map(doc => (
+            <tr class="doc-item hover:bg-gray-50" data-year={doc.year || ''}>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm font-medium text-gray-900">{doc.name}</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-500">{doc.year || 'N/A'}</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <PdfLink 
+                  name={doc.name} 
+                  filename={doc.filename} 
+                  year={doc.year}
+                  showYear={false}
+                />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )}
+</div>
+
+{showFilters && (
+  <script>
+    // Document filtering functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const yearFilter = document.getElementById('doc-year-filter') as HTMLSelectElement;
+      const docContainer = document.querySelector('[data-doc-container]');
+      
+      if (yearFilter && docContainer) {
+        yearFilter.addEventListener('change', function() {
+          const selectedYear = this.value;
+          const docItems = docContainer.querySelectorAll('.doc-item');
+          
+          docItems.forEach(item => {
+            const itemYear = (item as HTMLElement).dataset.year;
+            const shouldShow = !selectedYear || itemYear === selectedYear;
+            
+            if (shouldShow) {
+              (item as HTMLElement).style.display = '';
+            } else {
+              (item as HTMLElement).style.display = 'none';
+            }
+          });
+          
+          // Announce filter change to screen readers
+          const visibleCount = Array.from(docItems).filter(item => 
+            (item as HTMLElement).style.display !== 'none'
+          ).length;
+          
+          const announcement = `Showing ${visibleCount} document${visibleCount !== 1 ? 's' : ''}${selectedYear ? ` for year ${selectedYear}` : ''}`;
+          
+          // Create temporary announcement element
+          const announcer = document.createElement('div');
+          announcer.setAttribute('aria-live', 'polite');
+          announcer.setAttribute('aria-atomic', 'true');
+          announcer.className = 'sr-only';
+          announcer.textContent = announcement;
+          document.body.appendChild(announcer);
+          
+          setTimeout(() => {
+            document.body.removeChild(announcer);
+          }, 1000);
+        });
+      }
+    });
+  </script>
+)}

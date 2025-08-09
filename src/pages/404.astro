@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getAllContent } from '../utils/data';
+
+// Get all content for search suggestions
+const allContent = await getAllContent();
+
+// Get popular pages
+const popularPages = [
+  { title: 'Home', href: '/', description: 'Return to the main page' },
+  { title: 'Golf Activities', href: '/golf', description: 'Competitions and matches' },
+  { title: 'Portfolio', href: '/portfolio', description: 'Management information' },
+  { title: 'Administration', href: '/administration', description: 'Governance and documents' },
+  { title: 'Hall of Fame', href: '/hall-of-fame', description: 'Awards and champions' },
+];
+
+const title = 'Page Not Found - Vale Royal Abbey Golf Club Seniors';
+const description = 'The page you are looking for could not be found. Use our search or navigation to find what you need.';
+---
+
+<BaseLayout title={title} description={description}>
+  <main role="main" class="min-h-screen bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="text-center">
+        <!-- 404 Icon -->
+        <div class="mx-auto h-24 w-24 text-gray-400 mb-8">
+          <svg class="h-full w-full" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+        </div>
+        
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Page Not Found</h1>
+        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          Sorry, we couldn't find the page you're looking for. The page may have been moved, deleted, or the URL might be incorrect.
+        </p>
+        
+        <!-- Search Box -->
+        <div class="max-w-md mx-auto mb-12">
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+            <input
+              type="text"
+              id="404-search"
+              placeholder="Search for content..."
+              class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-green-500 focus:border-green-500"
+            />
+          </div>
+          
+          <!-- Search Results -->
+          <div id="404-search-results" class="mt-4 hidden">
+            <div class="bg-white border border-gray-200 rounded-md shadow-lg max-h-64 overflow-y-auto">
+              <!-- Results will be populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+        
+        <!-- Popular Pages -->
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl font-semibold text-gray-900 mb-6">Popular Pages</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {popularPages.map(page => (
+              <a 
+                href={page.href}
+                class="block bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200"
+              >
+                <h3 class="text-lg font-medium text-gray-900 mb-2">{page.title}</h3>
+                <p class="text-gray-600 text-sm">{page.description}</p>
+                <div class="mt-4 flex items-center text-green-600 text-sm font-medium">
+                  Visit page
+                  <svg class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+        
+        <!-- Contact Information -->
+        <div class="mt-16 bg-white rounded-lg shadow-sm border border-gray-200 p-8 max-w-2xl mx-auto">
+          <h3 class="text-lg font-medium text-gray-900 mb-4">Still can't find what you're looking for?</h3>
+          <p class="text-gray-600 mb-6">
+            Contact our seniors section for assistance or to report a broken link.
+          </p>
+          <a 
+            href="mailto:seniors@vragc.co.uk"
+            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 transition-colors"
+          >
+            <svg class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Contact Seniors Section
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<script define:vars={{ allContent }}>
+  // 404 page search functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('404-search');
+    const searchResults = document.getElementById('404-search-results');
+    
+    if (!searchInput || !searchResults) return;
+    
+    let searchTimeout;
+    
+    searchInput.addEventListener('input', function() {
+      clearTimeout(searchTimeout);
+      const query = this.value.trim();
+      
+      if (!query) {
+        searchResults.classList.add('hidden');
+        return;
+      }
+      
+      searchTimeout = setTimeout(() => {
+        performSearch(query);
+      }, 300);
+    });
+    
+    function performSearch(query) {
+      const searchTerm = query.toLowerCase();
+      const results = allContent.filter(item => {
+        const searchableText = [
+          item.title,
+          item.content,
+          ...(item.pdfs?.map(pdf => pdf.name) || [])
+        ].join(' ').toLowerCase();
+        
+        return searchableText.includes(searchTerm);
+      }).slice(0, 5); // Limit to 5 results
+      
+      if (results.length === 0) {
+        searchResults.innerHTML = `
+          <div class="p-4 text-center text-gray-500">
+            <p>No results found for "${query}"</p>
+          </div>
+        `;
+      } else {
+        const resultsHTML = results.map(item => {
+          const section = item.page.includes('golf') ? 'golf' :
+                        item.page.includes('portfolio') ? 'portfolio' :
+                        item.page.includes('administration') ? 'administration' :
+                        '';
+          
+          const url = section ? `/${section}/${item.slug}` : `/${item.slug}`;
+          
+          return `
+            <a href="${url}" class="block p-4 hover:bg-gray-50 border-b border-gray-100 last:border-b-0">
+              <div class="font-medium text-gray-900">${item.title}</div>
+              <div class="text-sm text-gray-600 mt-1">${item.content ? item.content.replace(/<[^>]*>/g, '').substring(0, 100) + '...' : ''}</div>
+              ${section ? `<div class="text-xs text-green-600 mt-1 capitalize">${section}</div>` : ''}
+            </a>
+          `;
+        }).join('');
+        
+        searchResults.innerHTML = resultsHTML;
+      }
+      
+      searchResults.classList.remove('hidden');
+    }
+    
+    // Hide results when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+        searchResults.classList.add('hidden');
+      }
+    });
+  });
+</script>
