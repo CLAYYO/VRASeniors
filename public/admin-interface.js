@@ -2,12 +2,113 @@
 let originalContent = [];
 let currentContent = [];
 
+// Authentication configuration
+const ADMIN_PASSWORD = 'VRASeniors2024!'; // Change this to your desired password
+const AUTH_SESSION_KEY = 'vra_admin_auth';
+const AUTH_TIMEOUT = 2 * 60 * 60 * 1000; // 2 hours in milliseconds
+
 // Initialize the admin interface
 document.addEventListener('DOMContentLoaded', function() {
+  checkAuthentication();
+});
+
+function checkAuthentication() {
+  const authData = localStorage.getItem(AUTH_SESSION_KEY);
+  
+  if (authData) {
+    try {
+      const { timestamp, authenticated } = JSON.parse(authData);
+      const now = Date.now();
+      
+      // Check if session is still valid (within timeout period)
+      if (authenticated && (now - timestamp) < AUTH_TIMEOUT) {
+        showAdminInterface();
+        return;
+      }
+    } catch (e) {
+      console.warn('Invalid auth data, clearing session');
+    }
+  }
+  
+  // Clear any invalid session data
+  localStorage.removeItem(AUTH_SESSION_KEY);
+  showLoginModal();
+}
+
+function showLoginModal() {
+  const loginModal = document.getElementById('login-modal');
+  const adminContent = document.getElementById('admin-content');
+  
+  if (loginModal) {
+    loginModal.classList.remove('hidden');
+    setupLoginForm();
+  }
+  
+  if (adminContent) {
+    adminContent.classList.add('hidden');
+  }
+}
+
+function showAdminInterface() {
+  const loginModal = document.getElementById('login-modal');
+  const adminContent = document.getElementById('admin-content');
+  
+  if (loginModal) {
+    loginModal.classList.add('hidden');
+  }
+  
+  if (adminContent) {
+    adminContent.classList.remove('hidden');
+  }
+  
+  // Initialize admin interface
   initializeContent();
   setupEventListeners();
   setupRichTextEditor();
-});
+}
+
+function setupLoginForm() {
+  const loginForm = document.getElementById('login-form');
+  const passwordInput = document.getElementById('admin-password');
+  const errorDiv = document.getElementById('login-error');
+  
+  if (!loginForm || !passwordInput || !errorDiv) return;
+  
+  loginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const enteredPassword = passwordInput.value;
+    
+    if (enteredPassword === ADMIN_PASSWORD) {
+      // Store authentication in localStorage with timestamp
+      const authData = {
+        authenticated: true,
+        timestamp: Date.now()
+      };
+      localStorage.setItem(AUTH_SESSION_KEY, JSON.stringify(authData));
+      
+      // Show admin interface
+      showAdminInterface();
+      
+      // Clear form
+      passwordInput.value = '';
+      errorDiv.classList.add('hidden');
+    } else {
+      // Show error
+      errorDiv.classList.remove('hidden');
+      passwordInput.value = '';
+      passwordInput.focus();
+    }
+  });
+  
+  // Focus password input
+  passwordInput.focus();
+}
+
+function logout() {
+  localStorage.removeItem(AUTH_SESSION_KEY);
+  showLoginModal();
+}
 
 function decodeHtmlEntities(text) {
   const textarea = document.createElement('textarea');
