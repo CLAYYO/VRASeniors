@@ -3,7 +3,7 @@ let originalContent = [];
 let currentContent = [];
 
 // Authentication configuration
-const ADMIN_PASSWORD = 'VRASeniors2024!'; // Change this to your desired password
+const ADMIN_PASSWORD = 'VRASeniors2025'; // Change this to your desired password
 const AUTH_SESSION_KEY = 'vra_admin_auth';
 const AUTH_TIMEOUT = 2 * 60 * 60 * 1000; // 2 hours in milliseconds
 
