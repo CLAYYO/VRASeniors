@@ -1,4 +1,6 @@
 ---
+export const prerender = false;
+
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SidebarNav from '../../components/SidebarNav.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
@@ -6,17 +8,14 @@ import PageHeader from '../../components/PageHeader.astro';
 import DocList from '../../components/DocList.astro';
 import { getContentBySection, getContentBySlug, getBreadcrumbs, sanitizeContent } from '../../utils/data';
 
-export async function getStaticPaths() {
-  const golfContent = await getContentBySection('golf');
-  
-  return golfContent.map(item => ({
-    params: { slug: item.slug },
-    props: { item }
-  }));
-}
-
 const { slug } = Astro.params;
-const { item } = Astro.props;
+
+// Get the content item for this slug
+const item = getContentBySlug('golf', slug as string);
+
+if (!item) {
+  return Astro.redirect('/404');
+}
 
 // Get all golf content for sidebar
 const golfContent = await getContentBySection('golf');

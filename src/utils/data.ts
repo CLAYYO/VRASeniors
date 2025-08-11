@@ -91,6 +91,17 @@ export function sanitizeContent(content: string): string {
     .replace(/on\w+="[^"]*"/gi, '');
 }
 
+// Decode HTML entities and prepare content for rendering
+export function prepareHtmlContent(content: string): string {
+  // Decode common HTML entities
+  return content
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'");
+}
+
 // Extract year from filename or content
 export function extractYear(item: ContentItem): number | undefined {
   if (item.year) {

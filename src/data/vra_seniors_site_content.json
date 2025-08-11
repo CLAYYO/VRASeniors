@@ -7,6 +7,7 @@
   {
     "page": "weekly_competitions",
     "title": "Weekly Competitions",
+    "slug": "weekly-competitions",
     "content": "The Weekly Competitions page states that competition start sheets are now on BRS. It provides links to documents such as Winter League Table 2019–20, monthly prize lists (October 2020, September 2020), fixtures for 2021–22, a WHS course handicap table, a 14-hole stroke index table and the Seniors general competition conditions.",
     "pdfs": [
       {
@@ -38,6 +39,7 @@
   {
     "page": "matches",
     "title": "Inter Club Matches",
+    "slug": "inter-club-matches",
     "content": "This page explains how to enter inter-club matches. It has a table titled 2025 Senior Inter Club Matches listing match dates, clubs, venues and a column showing when entry opens. Entry and team-sheet links allow members to enter their names and view team sheets. The match entry instructions explain the meaning of the columns and that players must pay for match meals and inform the captain if they cannot play.",
     "pdfs": [
       {
@@ -53,6 +55,7 @@
   {
     "page": "knockouts",
     "title": "Knock Outs",
+    "slug": "knock-outs",
     "content": "The Knock Outs page lists the Tuckley Trophy and Diamond Plate knock-out competitions. For each year (2010–2022), buttons open PDF brackets showing the draw and winners (for example the 2021 Tuckley Trophy PDF shows match-ups and declares Mark Patton the winner).",
     "pdfs": [
       {
@@ -76,11 +79,13 @@
   {
     "page": "exchange_days",
     "title": "Exchange Days",
+    "slug": "exchange-days",
     "content": "This page explains that exchange days allow seniors to play at other clubs. A table lists events (e.g., Bramhall on 19 July, Bolton Old Links on 21 August) with columns for entry date, entry sheet and tee-times sheet. Instructions say not to enter before the opening date, to use the entry sheet to add names or view entries, and to use the tee-times sheet to view final times."
   },
   {
     "page": "rider_cup",
     "title": "Rider Cup (Wrinklies v Crinklies)",
+    "slug": "rider-cup",
     "content": "The Rider Cup section provides PDFs of the 2018 Wrinklies v Crinklies competition. The Day 1 PDF lists the order of play, meeting time (8.45 am) and explains that the format is pairs four-ball better-ball match play with 90% handicap difference from the lowest player.",
     "pdfs": [
       {
@@ -96,6 +101,7 @@
   {
     "page": "friendlies",
     "title": "Friendly Matches",
+    "slug": "friendly-matches",
     "content": "The Friendlies page lists historic friendly matches with clubs such as Bromborough and Lymm. Clicking a match (e.g., Bromborough Away – 12 April 2017) opens a PDF with the roster and match details. The Bromborough PDF shows the match took place on Wednesday 12 April 2017 at Bromborough GC, with an 08:30 meet for a 09:15 tee time and tables of pairings and handicaps.",
     "pdfs": [
       {
@@ -111,6 +117,7 @@
   {
     "page": "whs",
     "title": "World Handicap System",
+    "slug": "world-handicap-system",
     "content": "Explains that the World Handicap System (WHS) replaced the CONGU system on 2 November 2020. Every golfer now has a Handicap Index (HI) and each course has a slope rating. A course handicap is calculated as HI × (Slope Rating ÷ 113), rounded to the nearest whole number. A playing handicap is then derived from the course handicap by applying a percentage (95% for singles, 90% for four-ball match play, 85% for four-ball stroke play). A table compares old terms (Standard Scratch Score, CSS, Exact Handicap, etc.) with new WHS terms such as Course Rating, Playing Conditions Calculation, Handicap Index and Course Handicap. The page includes links to England Golf's information package and a button leading to conversion tables.",
     "pdfs": [
       {
@@ -126,6 +133,7 @@
   {
     "page": "whs_conversion_tables",
     "title": "WHS Conversion Tables",
+    "slug": "whs-conversion-tables",
     "content": "Lists conversion tables for 18-hole and 14-hole rounds. Tables are provided for different tees (white, yellow, red) for gents and ladies, as well as Texas Scrambles and Foursomes & Greensomes. The tables convert Handicap Index values to course and playing handicaps for various formats.",
     "pdfs": [
       {
@@ -145,6 +153,7 @@
   {
     "page": "introduction",
     "title": "Portfolio – Introduction",
+    "slug": "introduction",
     "content": "PDF document explaining that the Seniors Section formed when the club opened on 1 October 1998. The qualifying age was originally 50 and later 55. As membership grew, the seniors introduced home-and-away matches, winter and summer leagues, a bottle run at Christmas, gourmet evenings and various trophies. The section has its own website, developed with the support of Ivor Prosser.",
     "pdfs": [
       {
@@ -156,21 +165,14 @@
   {
     "page": "seniors_benefits",
     "title": "Seniors Section Membership Benefits",
-    "content": "PDF summarising benefits for members over 55. It notes that membership is open to VRAGC members over 55 with a subscription payable each season. Weekly competitions are held on Thursday mornings with prize money for individuals and teams. The section organises inter-club matches, friendlies, an away day, exchange days, seniors invitation day, matches with the ladies, match-play knock-outs and the Rider Cup. Communication is via monthly e-mails and the website. It also lists committee officers such as Acting Chairman/Treasurer Andrew Threlkeld, Secretary Mick Clarke, Match Organiser Trevor Meech and others.",
-    "pdfs": [
-      {
-        "name": "Membership Benefits Summary",
-        "filename": "membership-benefits-summary.pdf"
-      },
-      {
-        "name": "Committee Officers List",
-        "filename": "committee-officers-list.pdf"
-      }
-    ]
+    "slug": "seniors-benefits",
+    "content": "<h3>Membership Eligibility</h3><p>Membership is open to all VRAGC members over 55 years of age. A subscription is payable each season.</p><h3>Weekly Competitions</h3><p>Weekly competitions are held on Thursday mornings with prize money for individuals and teams.</p><h3>Prize Money</h3><p>Prize money is awarded for weekly competitions, with separate divisions and prizes for different skill levels.</p><h3>Seasonal Events</h3><p>The section organises a variety of seasonal events including:</p><ul><li>Inter-club matches</li><li>Friendly matches</li><li>Annual away day</li><li>Exchange days with other clubs</li><li>Seniors invitation day</li><li>Matches with the ladies section</li><li>Match-play knock-out competitions</li><li>The Rider Cup (Wrinklies v Crinklies)</li></ul><h3>Summer Activities</h3><p>During the summer months, additional activities and competitions are organised to keep members engaged.</p><h3>Communication</h3><p>Communication with members is maintained through:</p><ul><li>Monthly email updates</li><li>The seniors section website</li><li>Notice board updates</li></ul><h3>Current Seniors Committee</h3><p>The current committee includes:</p><ul><li><strong>Acting Chairman/Treasurer:</strong> Andrew Threlkeld</li><li><strong>Secretary:</strong> Mick Clarke</li><li><strong>Match Organiser:</strong> Trevor Meech</li><li><strong>Assistant Secretary:</strong> [Position details available]</li><li><strong>Social Secretary:</strong> [Position details available]</li></ul><p>For more information about committee roles and responsibilities, please see the Committee Structure section.</p>",
+    "pdfs": []
   },
   {
     "page": "operating_guidelines",
     "title": "Operating Guidelines",
+    "slug": "operating-guidelines",
     "content": "Describes aims of the seniors section: to bring like-minded members together, encourage competitive golf, arrange social functions, enhance the club's reputation through matches and operate without conflicting with the Club Constitution. Membership is open to VRAGC members aged 55 plus who pay the subscription. The document outlines the committee structure (chairman, secretary, assistant secretary, match organiser, assistant match organiser, treasurer, assistant treasurer, social secretary), explains competition entry procedures and notes that proposals to change activities must be submitted 14 days before the annual meeting and require a majority vote.",
     "pdfs": [
       {
@@ -182,33 +184,14 @@
   {
     "page": "committee_structure",
     "title": "Committee Structure and Duties",
-    "content": "A web page with buttons linking to PDFs describing duties of committee members. The Chairman's duties include acting as ambassador, chairing meetings, representing the seniors on the main club committee and having a casting vote. The Treasurer manages receipts and payments, collects subscriptions and competition income, maintains membership lists and presents annual accounts. The Match Organiser publishes the fixture list, selects teams, appoints captains of the day, organises catering and coordinates the away day, seniors invitation and Rider Cup. The Secretary organises committee meetings, produces competition entry sheets and results, keeps records of winners and liaises with the handicap committee. The Assistant Secretary supports the secretary with these tasks.",
-    "pdfs": [
-      {
-        "name": "Chairman Duties",
-        "filename": "chairman-duties.pdf"
-      },
-      {
-        "name": "Treasurer Duties",
-        "filename": "treasurer-duties.pdf"
-      },
-      {
-        "name": "Match Organiser Duties",
-        "filename": "match-organiser-duties.pdf"
-      },
-      {
-        "name": "Secretary Duties",
-        "filename": "secretary-duties.pdf"
-      },
-      {
-        "name": "Assistant Secretary Duties",
-        "filename": "assistant-secretary-duties.pdf"
-      }
-    ]
+    "slug": "committee-structure",
+    "content": "<h3>Chairman</h3><p>An ambassadorial role to lead and guide the seniors section through the maintaining or developing of policies and practices which are intended to bring social and economic benefits not only to members of the section but to the Club as a whole.</p><h4>Duties – The Chairman shall:</h4><ul><li>chair all meetings of the committee</li><li>chair all planned seasonal meetings</li><li>agree the dates of Committee meetings with the Secretary</li><li>have the casting vote in the case of a tie</li><li>take the role of Seniors Chair on the main Club Committee</li><li>when appropriate, represent the seniors section to other bodies</li><li>report to members on a regular basis about the state of the section</li><li>oversee articles submitted to \"The Driver\" by other seniors</li></ul><h3>Treasurer</h3><p>Financial management of all receipts and payments to and from the Seniors bank account.</p><h4>Duties – The Treasurer shall:</h4><ul><li>collect all subscriptions and competition income</li><li>maintain a valid membership list</li><li>publish names of payment defaulters on the notice board after a lapsed period of two weeks</li><li>control the seniors bank account and ensure that two signatures of committee members are valid at any one time</li><li>present a statement of accounts at the annual meeting of members</li><li>make any necessary proposals to Committee concerning income stream and expenditure in order to maintain a positive balance in the account</li><li>ensure that the operation of the seniors financial status does not incur a financial burden on VRAGC Ltd</li><li>arrange for an independent audit every year (outside of the organising committee)</li></ul><h3>Match Organiser</h3><p>To be responsible for all inter-club matches.</p><h4>Duties – The match organiser shall:</h4><ul><li>organise and publish a fixture list of home & away matches with other clubs for the current year, having agreed and confirmed with all the other clubs</li><li>select teams from those senior section members who make themselves available for specific matches</li><li>ensure that reserves are available for last minute contingencies</li><li>appoint a Captain of the Day (C of D)</li><li>provide the (C of D) with multiple copies of the team sheet to enable participating members to identify their opponents and to provide the designated money collector on the day with a check list</li><li>agree the \"home\" price for the meal where possible for the complete season and agree the menu with the catering team on a match for match basis</li><li>prepare a function sheet for each home match one week in advance and forward to office administration so that catering and room layout can be organised</li><li>confirm with host or visiting club at least one week in advance the final arrangements</li><li>keep and publish on the seniors web site a record of all match results</li><li>liaise with the ladies section on the three joint matches held during each year</li><li>organise or co-opt help for the annual Seniors Away Day</li><li>organise or co-opt help for the annual Seniors Invitation</li><li>co-ordinate the annual Rider Cup with the elected Captains</li><li>agree with Committee venues, dates, menu, format, prizes & costing</li></ul><h3>Secretary</h3><p>To be responsible for organising Committee meetings and recording the meeting notes of the Committee and other members meetings as and when held. To be responsible for the smooth running of the weekly and knockout competitions throughout the year.</p><h4>Duties – The Secretary shall:</h4><ul><li>arrange dates for Committee meetings throughout the year</li><li>deputise for the Chairman in his absence</li><li>responsible for setting up the handicap and comps computer before the first match is due back into the clubhouse</li><li>produce the competition entry sheets for a least the next 4 weeks in advance and publish them on the seniors notice board</li><li>produce the following week's sheet and ensure that it is published two weeks in advance on the notice board and web site</li><li>collect and publish data and results for all club competitions</li><li>creates in co-operation with the Match Organiser the biannual competitions</li><li>keeps records of all winners and place positions</li><li>create the biannual list of winners and money allocation in accordance with the set guidelines for each competition</li><li>liaises with the handicap & comps committee to ensure the fair application of handicap adjustments</li></ul><h3>Assistant Secretary</h3><p>To deputise for the Secretary on those organisational matters that may be delegated to him from time to time.</p><h4>Duties – The Assistant Secretary shall help as required to:</h4><ul><li>arrange dates for Committee meetings throughout the year</li><li>deputise for the Secretary in his absence</li><li>set up the handicap and comps computer before the first match is due back into the clubhouse</li><li>produce the match entry sheets for a least the next 4 weeks in advance and publish them on the seniors notice board</li><li>produce the following week's competition sheet and ensure that it is published one week in advance on the notice board and web site</li><li>collect and publish data and results for all club competitions</li><li>creates in co-operation with the Match Organiser the biannual competitions</li><li>keeps records of all winners and place positions</li><li>create the biannual list of winners and money allocation in accordance with the set guidelines for each competition</li><li>liaises with the handicap & comps committee to ensure the fair application of handicap adjustments</li></ul>",
+    "pdfs": []
   },
   {
     "page": "inter_club_matches_portfolio",
     "title": "Portfolio – Inter Club Matches",
+    "slug": "inter-club-matches",
     "content": "Provides links to annual team results (2008–2019 and 2022–2023) and to the Captain of the Day duties document. The Captain of the Day duties PDF lists responsibilities: ensure players confirm participation and contact reserves, greet visiting teams, finalise team sheets and payments, instruct players on tee colour and handicaps, coordinate meal times, welcome visitors and announce results. The Team Results 2023 PDF contains a table of match results, showing whether the seniors won, lost or drew against each opposing club during the 2023 season.",
     "pdfs": [
       {
@@ -232,6 +215,7 @@
   {
     "page": "seniors_competitions",
     "title": "Seniors Competitions",
+    "slug": "seniors-competitions",
     "content": "Offers many competition categories (Seniors Championship, LMS Summer League Trophy, Monthly Medal, Winter League Trophy, Rider Cup, Tuckley Trophy, Diamond Plate, Old Factotums Trophy, Absent Friends Trophy, Fun Comps, Texas Scrambles, etc.) with buttons leading to rules and historical results. The General Conditions of Entry PDF states that competitors must be paid-up members over 55 and that subscriptions must be paid before entry otherwise the player will be disqualified. Entry sheets are posted four weeks ahead, start sheets two weeks ahead, and players must inform partners if they withdraw. Ties in stroke-play competitions are decided by card countback based on the last 9, 6, 3, 4th hole and other criteria.",
     "pdfs": [
       {
@@ -259,6 +243,7 @@
   {
     "page": "financial_operation",
     "title": "Financial Operation",
+    "slug": "financial-operation",
     "content": "Explains how the seniors section finances competitions. The year is divided into summer and winter sessions with a monthly medal. To cover prizes, members pay a session fee rather than paying for each competition. In 2010 the fees were £30 for summer, £30 for winter, and £3 for the Tuckley Trophy; members playing only part of a season pay £5 per month. Fees are due by 31 March (summer and Tuckley Trophy) or 30 September (winter). The treasurer informs the committee of defaulters, who cannot compete and are disqualified if they do. All running costs are covered by collected fees and the seniors accounts are separate from the main club accounts.",
     "pdfs": [
       {
@@ -274,6 +259,7 @@
   {
     "page": "seniors_invitation",
     "title": "Seniors Invitation",
+    "slug": "seniors-invitation",
     "content": "Describes the annual Seniors Invitation day, usually held on the second Friday in September. Members may bring up to three guests aged 55 or over with competitive handicaps. The entry fee includes a two-course meal. Entries open about four weeks prior via the BRS system and must be paid to the treasurer in advance. Format is 4-ball better-ball Stableford off 90% handicap, using yellow tees. Members enter names and tee times on the master sheet, pay in full by the due date, return cards within 20 minutes of finishing and are responsible for signing in guests. Because the event is popular, a results sheet is provided instead of a formal presentation.",
     "pdfs": [
       {
@@ -289,6 +275,7 @@
   {
     "page": "hall_of_fame",
     "title": "Hall of Fame",
+    "slug": "hall-of-fame",
     "content": "Provides buttons to view past captains and winners of trophies including LMS Trophy, Tuckley Trophy, Diamond Plate, Rider Cup, Winter League, Absent Friends Trophy, Old Factotums, Improver of the Year and Special Performances. The Past Captains PDF lists names and years of office, e.g., Michael Neale (2000), Peter Roberts (2001), Trevor Wilkes (2002), Andy Rogerson (2004), Martyn Hall (2006), Derek O'Brien (2007), Lyndon Carthew (2009), John Wooldridge (2012), Terry Hargrove (2013), Michael Clarke (2014), Nigel Wells (2015), Andrew Threlkeld (2016), Derek O'Brien (2017), Ian Brandon (2019), Mark Patton (2020 & 2021), Geoff Anderton (2022) and Mark Haynes (2023).",
     "pdfs": [
       {
@@ -324,6 +311,7 @@
   {
     "page": "vra_constitution",
     "title": "VRA Constitution",
+    "slug": "vra-constitution",
     "content": "A 13-page PDF titled 'Constitution and Rules of Vale Royal Abbey Golf Club'. It details the governance of the club, membership categories, rights and responsibilities, committee structures, subscription rules, and procedures for meetings. Revisions have been made multiple times, most recently in November 2021.",
     "pdfs": [
       {
@@ -335,6 +323,7 @@
   {
     "page": "document_tracker",
     "title": "Document Change Tracker",
+    "slug": "document-tracker",
     "content": "A document change tracker lists updates made to the seniors portfolio. Entries include the date, file reference, change and author. For example, November 2011 updates note that the seniors committee was renamed, nearest pin prizes were reduced from two to one bottle of wine, Deserving Cause and Improver of the Year were added and a check list for changing rooms introduced. The tracker continues through subsequent years, documenting revisions such as updated winners lists, amended competition formats and new documents.",
     "pdfs": [
       {
@@ -346,6 +335,7 @@
   {
     "page": "prize_structure",
     "title": "Prize Structure",
+    "slug": "prize-structure",
     "content": "The Annual Competitions Prize Structure table lists entry fees and prizes for major competitions (Tuckley Trophy, Diamond Plate, LMS Trophy, Winter League, Rider Cup, Old Factotums, Absent Friends). For example, the Tuckley Trophy entry fee is £3 with prizes of a trophy/replica and cash for the overall winner, second, third and fourth places. A weekly prize money section details payouts by division for the monthly medal, subsidiary stableford, LMS Trophy and winter league. Additional sections cover prizes for fun competitions, 9-hole and lunch events, the seniors invitation day, away days, exchange days and mixed events with ladies. An April 2025 note states that each division will be balanced by handicap index.",
     "pdfs": [
       {
@@ -361,6 +351,7 @@
   {
     "page": "annual_meeting_minutes",
     "title": "Annual Meeting Minutes (2024)",
+    "slug": "annual-meeting-minutes",
     "content": "The Seniors Annual Report dated March 28 2024 summarises reports from committee sections presented at the annual meeting. It includes election results for vacant committee posts. The Chairman's report acknowledges the passing of several members, praises the thriving seniors section and thanks volunteers. It notes new committee members David Helm and Paul Williams and commends Secretary Mick Clarke for comprehensive meeting minutes.",
     "pdfs": [
       {
@@ -376,6 +367,7 @@
   {
     "page": "photo_gallery",
     "title": "Photo Gallery",
+    "slug": "photo-gallery",
     "content": "The photo gallery link points to a Gallery.html page which returns a 404 Not Found error, so no gallery content is available."
   }
 ]

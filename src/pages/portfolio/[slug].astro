@@ -1,22 +1,23 @@
 ---
+export const prerender = false;
+
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SidebarNav from '../../components/SidebarNav.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import DocList from '../../components/DocList.astro';
-import { getContentBySection, getContentBySlug, getBreadcrumbs, sanitizeContent } from '../../utils/data';
 
-export async function getStaticPaths() {
-  const portfolioContent = await getContentBySection('portfolio');
-  
-  return portfolioContent.map(item => ({
-    params: { slug: item.slug },
-    props: { item }
-  }));
-}
+
+import { getContentBySection, getContentBySlug, getBreadcrumbs, sanitizeContent, prepareHtmlContent } from '../../utils/data';
 
 const { slug } = Astro.params;
-const { item } = Astro.props;
+
+// Get the content item for this slug
+const item = getContentBySlug('portfolio', slug as string);
+
+if (!item) {
+  return Astro.redirect('/404');
+}
 
 // Get all portfolio content for sidebar
 const portfolioContent = await getContentBySection('portfolio');
@@ -37,13 +38,18 @@ const description = item.content ? sanitizeContent(item.content).substring(0, 16
     <main class="flex-1" role="main">
       <PageHeader 
         title={item.title.replace('Portfolio – ', '')} 
-        description={item.content ? sanitizeContent(item.content).substring(0, 200) : undefined}
+        description={undefined}
       />
       
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {item.content ? (
           <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 mb-8">
-            <div class="prose prose-lg max-w-none" set:html={item.content} />
+            <div class="content-container">
+              <div class="html-content" id="content-area"></div>
+              <script define:vars={{ content: item.content }}>
+                document.getElementById('content-area').innerHTML = content;
+              </script>
+            </div>
           </div>
         ) : (
           <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 mb-8">
@@ -68,39 +74,57 @@ const description = item.content ? sanitizeContent(item.content).substring(0, 16
   </div>
 </BaseLayout>
 
+
+
+
+
 <style>
-  /* Custom styles for content formatting */
-  .prose ul {
-    list-style-type: disc;
-    margin-left: 1.5rem;
-  }
-  
-  .prose ol {
-    list-style-type: decimal;
-    margin-left: 1.5rem;
-  }
-  
-  .prose li {
-    margin-bottom: 0.5rem;
-  }
-  
-  .prose p {
-    margin-bottom: 1rem;
-  }
-  
-  .prose h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    color: #1f2937;
-  }
-  
-  .prose h3 {
+  /* Custom styles for HTML content */
+  .html-content h3 {
     font-size: 1.25rem;
     font-weight: 600;
     margin-top: 1.5rem;
     margin-bottom: 0.75rem;
     color: #1f2937;
+    display: block;
+  }
+  
+  .html-content h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+    display: block;
+  }
+  
+  .html-content p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    display: block;
+  }
+  
+  .html-content ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  
+  .html-content ol {
+    list-style-type: decimal;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  
+  .html-content li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    display: list-item;
+  }
+  
+  .html-content strong {
+    font-weight: 600;
   }
 </style>

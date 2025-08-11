@@ -8,7 +8,7 @@ export default defineConfig({
     tailwind(),
     sitemap()
   ],
-  output: 'static',
+  output: 'server',
   build: {
     assets: 'assets'
   }

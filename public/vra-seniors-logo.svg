@@ -4,7 +4,7 @@
   <desc id="desc">A circular badge with the text Vale Royal Abbey at the top and Seniors Section at the bottom around a friendly golfer illustration, in green mono-line style.</desc>
   <defs>
     <style>
-      :root { --green: #1d6a45; --bg:#f7f5ef; }
+      svg { --green: #1d6a45; --bg:#f7f5ef; }
       .ring { fill:none; stroke:var(--green); stroke-width:38; }
       .glyph { fill:none; stroke:var(--green); stroke-width:22; stroke-linecap:round; stroke-linejoin:round; }
       .fill { fill:var(--green); }

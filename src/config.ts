@@ -18,7 +18,8 @@ export const config = {
       { label: 'Portfolio', href: '/portfolio' },
       { label: 'Administration', href: '/administration' },
       { label: 'Hall of Fame', href: '/hall-of-fame' },
-      { label: 'Contact', href: 'mailto:seniors@vragc.co.uk' }
+      { label: 'Contact', href: 'mailto:seniors@vragc.co.uk' },
+      { label: 'Admin', href: '/admin', admin: true }
     ]
   },
   

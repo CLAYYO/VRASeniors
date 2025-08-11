@@ -1,0 +1,296 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getAllContent, getSectionFromPage } from '../../utils/data';
+
+// Get all content for the admin interface
+const allContent = await getAllContent();
+
+const title = 'Content Management - Admin';
+const description = 'Admin interface for managing website content';
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="min-h-screen bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <!-- Header -->
+      <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Content Management</h1>
+        <p class="text-gray-600">Edit website content using the rich text editor below</p>
+        <div class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <p class="text-blue-800 text-sm">
+            <strong>Note:</strong> Changes are saved locally in your browser. Use the "Export JSON" button to download your changes, 
+            then replace the content file on the server.
+          </p>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="mb-6 flex flex-wrap gap-4">
+        <button 
+          id="save-all-btn"
+          class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+        >
+          Save All Changes
+        </button>
+        <button 
+          id="export-json-btn"
+          class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+        >
+          Export JSON
+        </button>
+        <button 
+          id="reset-btn"
+          class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+        >
+          Reset All
+        </button>
+        <div class="ml-auto">
+          <input 
+            type="file" 
+            id="import-json" 
+            accept=".json"
+            class="hidden"
+          >
+          <button 
+            id="import-btn"
+            class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+          >
+            Import JSON
+          </button>
+        </div>
+      </div>
+
+      <!-- Section Filter -->
+      <div class="mb-6">
+        <label for="section-filter" class="block text-sm font-medium text-gray-700 mb-2">
+          Filter by Section:
+        </label>
+        <select 
+          id="section-filter"
+          class="border border-gray-300 rounded-lg px-3 py-2 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        >
+          <option value="">All Sections</option>
+          <option value="golf">Golf</option>
+          <option value="portfolio">Portfolio</option>
+          <option value="administration">Administration</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <!-- Content Items -->
+      <div id="content-container" class="space-y-6">
+        {allContent.map((item, index) => {
+          const section = getSectionFromPage(item.page) || 'other';
+          return (
+          <div 
+            class="content-item bg-white rounded-lg shadow-sm border border-gray-200 p-6"
+            data-section={section}
+            data-page={item.page}
+            data-index={index}
+          >
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900">{item.title}</h3>
+                <p class="text-sm text-gray-500">Page: {item.page}</p>
+              </div>
+              <div class="flex gap-2">
+                <button 
+                  class="save-item-btn bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm transition-colors"
+                  data-index={index}
+                >
+                  Save
+                </button>
+                <button 
+                  class="reset-item-btn bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition-colors"
+                  data-index={index}
+                >
+                  Reset
+                </button>
+              </div>
+            </div>
+
+            <!-- Title Editor -->
+            <div class="mb-4">
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                Title:
+              </label>
+              <input 
+                type="text"
+                class="title-input w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                value={item.title}
+                data-index={index}
+              >
+            </div>
+
+            <!-- Content Editor -->
+            <div class="mb-4">
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                Content:
+              </label>
+              
+              <!-- Preview Area (Non-editable, shows rendered HTML) -->
+              <div class="mb-2">
+                <label class="block text-xs font-medium text-gray-500 mb-1">
+                  Preview (Rendered HTML):
+                </label>
+                <div 
+                  class="content-preview border border-gray-200 rounded-lg min-h-[100px] p-3 bg-gray-50"
+                  data-index={index}
+                >
+                  <Fragment set:html={item.content || ''} />
+                </div>
+              </div>
+              
+              <!-- Editor Area (Editable, for making changes) -->
+              <div>
+                <label class="block text-xs font-medium text-gray-500 mb-1">
+                  Editor (Raw HTML):
+                </label>
+                <div 
+                  class="content-editor border border-gray-300 rounded-lg min-h-[200px] p-3 focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-blue-500 font-mono text-sm"
+                  contenteditable="true"
+                  data-index={index}
+                >
+                  {item.content || ''}
+                </div>
+              </div>
+            </div>
+
+            <!-- PDF Files -->
+            {item.pdfs && item.pdfs.length > 0 && (
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  Associated PDF Files:
+                </label>
+                <div class="pdf-container space-y-2">
+                  {item.pdfs.map((pdf, pdfIndex) => (
+                    <div class="pdf-item flex items-center gap-2 p-2 bg-gray-50 rounded">
+                      <input 
+                        type="text"
+                        class="pdf-name-input flex-1 border border-gray-300 rounded px-2 py-1 text-sm"
+                        value={pdf.name}
+                        data-index={index}
+                        data-pdf-index={pdfIndex}
+                        placeholder="PDF Name"
+                      >
+                      <input 
+                        type="text"
+                        class="pdf-filename-input flex-1 border border-gray-300 rounded px-2 py-1 text-sm"
+                        value={pdf.filename}
+                        data-index={index}
+                        data-pdf-index={pdfIndex}
+                        placeholder="PDF Filename"
+                      >
+                      <button 
+                        class="remove-pdf-btn bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded text-sm"
+                        data-index={index}
+                        data-pdf-index={pdfIndex}
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  ))}
+                </div>
+                <button 
+                  class="add-pdf-btn mt-2 bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm"
+                  data-index={index}
+                >
+                  Add PDF
+                </button>
+              </div>
+            )}
+          </div>
+          );
+        })}
+      </div>
+    </div>
+
+    <!-- Success/Error Messages -->
+    <div id="message-container" class="fixed top-4 right-4 z-50"></div>
+  </main>
+
+  <!-- Rich Text Editor Toolbar -->
+  <div id="editor-toolbar" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-white shadow-lg rounded-lg border border-gray-300 p-2 hidden z-40">
+    <div class="flex gap-1">
+      <button class="toolbar-btn px-2 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100 transition-colors" data-command="bold" title="Bold">
+        <strong>B</strong>
+      </button>
+      <button class="toolbar-btn px-2 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100 transition-colors" data-command="italic" title="Italic">
+        <em>I</em>
+      </button>
+      <button class="toolbar-btn px-2 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100 transition-colors" data-command="underline" title="Underline">
+        <u>U</u>
+      </button>
+      <div class="border-l border-gray-300 mx-1"></div>
+      <button class="toolbar-btn px-2 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100 transition-colors" data-command="formatBlock" data-value="h3" title="Heading 3">
+        H3
+      </button>
+      <button class="toolbar-btn px-2 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100 transition-colors" data-command="formatBlock" data-value="p" title="Paragraph">
+        P
+      </button>
+      <div class="border-l border-gray-300 mx-1"></div>
+      <button class="toolbar-btn px-2 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100 transition-colors" data-command="insertUnorderedList" title="Bullet List">
+        •
+      </button>
+      <button class="toolbar-btn px-2 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100 transition-colors" data-command="insertOrderedList" title="Numbered List">
+        1.
+      </button>
+      <div class="border-l border-gray-300 mx-1"></div>
+      <button class="toolbar-btn px-2 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100 transition-colors" data-command="createLink" title="Insert Link">
+        🔗
+      </button>
+      <button class="toolbar-btn px-2 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100 transition-colors" data-command="unlink" title="Remove Link">
+        🔗❌
+      </button>
+    </div>
+  </div>
+
+  <style>
+    .content-editor:focus {
+      outline: none;
+    }
+    
+    .content-editor h3 {
+      @apply text-lg font-semibold mt-4 mb-2;
+    }
+    
+    .content-editor p {
+      @apply mb-2;
+    }
+    
+    .content-editor ul {
+      @apply list-disc list-inside mb-2;
+    }
+    
+    .content-editor ol {
+      @apply list-decimal list-inside mb-2;
+    }
+    
+    .content-editor li {
+      @apply mb-1;
+    }
+    
+    .content-editor a {
+      @apply text-blue-600 underline;
+    }
+    
+    .content-editor strong {
+      @apply font-semibold;
+    }
+    
+    .content-editor em {
+      @apply italic;
+    }
+  </style>
+
+  <script is:inline define:vars={{allContent}}>
+    // Pass content data to JavaScript without HTML escaping
+    window.adminContentData = allContent.map((item, index) => ({
+      page: item.page,
+      title: item.title,
+      content: item.content || '',
+      pdfs: item.pdfs || []
+    }));
+  </script>
+  <script src="/admin-interface.js" is:inline></script>
+</BaseLayout>

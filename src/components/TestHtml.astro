@@ -1,0 +1,16 @@
+---
+const testHtml = "<h3>Test Heading</h3><p>This is a test paragraph with <strong>bold text</strong>.</p><ul><li>Item 1</li><li>Item 2</li></ul>";
+---
+
+<div class="test-container">
+  <h2>Test HTML Rendering:</h2>
+  <div set:html={testHtml}></div>
+</div>
+
+<style>
+  .test-container {
+    border: 2px solid red;
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+</style>
