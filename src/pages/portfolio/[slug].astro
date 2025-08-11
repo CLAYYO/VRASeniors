@@ -1,23 +1,21 @@
 ---
-export const prerender = false;
-
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SidebarNav from '../../components/SidebarNav.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import DocList from '../../components/DocList.astro';
+import { getContentBySection, getBreadcrumbs, sanitizeContent } from '../../utils/data';
 
-
-import { getContentBySection, getContentBySlug, getBreadcrumbs, sanitizeContent, prepareHtmlContent } from '../../utils/data';
-
-const { slug } = Astro.params;
-
-// Get the content item for this slug
-const item = getContentBySlug('portfolio', slug as string);
-
-if (!item) {
-  return Astro.redirect('/404');
+export async function getStaticPaths() {
+  const portfolioContent = await getContentBySection('portfolio');
+  
+  return portfolioContent.map((item) => ({
+    params: { slug: item.slug },
+    props: { item }
+  }));
 }
+
+const { item } = Astro.props;
 
 // Get all portfolio content for sidebar
 const portfolioContent = await getContentBySection('portfolio');
@@ -33,7 +31,7 @@ const description = item.content ? sanitizeContent(item.content).substring(0, 16
   <Breadcrumbs breadcrumbs={breadcrumbs} />
   
   <div class="flex min-h-screen bg-gray-50">
-    <SidebarNav section="portfolio" sectionContent={portfolioContent} currentSlug={slug} />
+    <SidebarNav section="portfolio" sectionContent={portfolioContent} currentSlug={item.slug} />
     
     <main class="flex-1" role="main">
       <PageHeader 
