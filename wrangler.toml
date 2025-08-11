@@ -1,0 +1,17 @@
+name = "vra-seniors-website"
+compatibility_date = "2024-01-01"
+
+[env.production]
+compatibility_date = "2024-01-01"
+
+# Cloudflare Pages configuration
+pages_build_output_dir = "dist"
+
+# Environment variables (if needed)
+# [env.production.vars]
+# EXAMPLE_VAR = "production_value"
+
+# KV namespaces (if needed for sessions)
+# [[env.production.kv_namespaces]]
+# binding = "SESSION"
+# id = "your-kv-namespace-id"
