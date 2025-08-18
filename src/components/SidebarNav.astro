@@ -13,7 +13,7 @@ const sectionTitle = section.charAt(0).toUpperCase() + section.slice(1);
 ---
 
 <!-- Mobile Menu Button -->
-<div class="lg:hidden bg-white/95 backdrop-blur-sm border-b border-gray-200 p-4">
+<div class="lg:hidden bg-white/95 backdrop-blur-sm border-b border-gray-200 p-4 sticky top-16 z-30">
   <button
     id="sidebar-toggle"
     type="button"
@@ -31,12 +31,12 @@ const sectionTitle = section.charAt(0).toUpperCase() + section.slice(1);
 <!-- Sidebar Navigation -->
 <aside 
   id="sidebar-nav"
-  class="w-full lg:w-64 bg-white/95 backdrop-blur-sm border-r border-blue-100 lg:min-h-screen lg:block hidden lg:sticky lg:top-16 lg:max-h-[calc(100vh-4rem)] lg:overflow-y-auto shadow-lg" 
+  class="w-full lg:w-64 bg-white/95 backdrop-blur-sm border-r border-blue-100 lg:min-h-screen lg:block hidden lg:fixed lg:top-16 lg:left-0 lg:max-h-[calc(100vh-4rem)] lg:overflow-y-auto shadow-lg z-20" 
   role="navigation" 
   aria-label={`${sectionTitle} navigation`}
 >
-  <div class="p-6">
-    <h2 class="text-lg font-semibold text-gray-900 mb-4 hidden lg:block">{sectionTitle}</h2>
+  <div class="p-4 lg:p-6">
+    <h2 class="text-lg font-semibold text-gray-900 mb-4">{sectionTitle}</h2>
     
     <nav>
       <ul class="space-y-1">
@@ -121,12 +121,28 @@ const sectionTitle = section.charAt(0).toUpperCase() + section.slice(1);
         
         if (isHidden) {
           sidebarNav.classList.remove('hidden');
+          sidebarNav.classList.add('fixed', 'inset-0', 'top-32', 'z-40', 'lg:relative', 'lg:inset-auto', 'lg:top-0', 'lg:z-20');
           sidebarToggle.setAttribute('aria-expanded', 'true');
           toggleIcon.style.transform = 'rotate(180deg)';
+          document.body.style.overflow = 'hidden';
         } else {
           sidebarNav.classList.add('hidden');
+          sidebarNav.classList.remove('fixed', 'inset-0', 'top-32', 'z-40');
           sidebarToggle.setAttribute('aria-expanded', 'false');
           toggleIcon.style.transform = 'rotate(0deg)';
+          document.body.style.overflow = 'auto';
+        }
+      });
+      
+      // Close sidebar when clicking outside on mobile
+      document.addEventListener('click', (e) => {
+        if (window.innerWidth < 1024 && !sidebarNav.classList.contains('hidden') && 
+            !sidebarNav.contains(e.target) && !sidebarToggle.contains(e.target)) {
+          sidebarNav.classList.add('hidden');
+          sidebarNav.classList.remove('fixed', 'inset-0', 'top-32', 'z-40');
+          sidebarToggle.setAttribute('aria-expanded', 'false');
+          toggleIcon.style.transform = 'rotate(0deg)';
+          document.body.style.overflow = 'auto';
         }
       });
     }

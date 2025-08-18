@@ -18,11 +18,10 @@ const description = 'Administrative information and governance details for the V
 <BaseLayout title={title} description={description}>
   <Breadcrumbs breadcrumbs={breadcrumbs} />
   
-  <div class="min-h-screen w-full max-w-full overflow-x-hidden">
-    <div class="lg:flex w-full max-w-full">
-      <SidebarNav section="administration" sectionContent={administrationContent} />
-      
-      <main class="flex-1 lg:ml-0 w-full max-w-full min-w-0" role="main">
+  <div class="bg-gray-50 min-h-screen">
+    <SidebarNav section="administration" sectionContent={administrationContent} />
+    
+    <main class="w-full lg:ml-64" role="main">
         <div class="bg-white/95 backdrop-blur-sm">
           <PageHeader 
             title="Administration" 
@@ -30,7 +29,7 @@ const description = 'Administrative information and governance details for the V
           />
         </div>
         
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-8">
           <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 w-full">
             {administrationContent.map(item => (
               <div class="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-100 hover:border-blue-300 group hover:scale-[1.02]">
