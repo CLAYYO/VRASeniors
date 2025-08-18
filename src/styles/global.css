@@ -200,6 +200,25 @@
   --tw-ring-color: rgb(34 197 94 / var(--tw-ring-opacity));
 }
 
+/* Base anchor tag styles to ensure links are clickable and visually distinct */
+a {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #2563eb; /* blue-600 */
+}
+
+a:hover {
+  color: #1d4ed8; /* blue-700 */
+  text-decoration: underline;
+}
+
+/* Override for specific styled links that already have proper styling */
+a.inline-flex,
+a[class*="text-"],
+a[class*="hover:text-"] {
+  text-decoration: none;
+}
+
 /* SVG icon sizing */
 svg {
   flex-shrink: 0;
