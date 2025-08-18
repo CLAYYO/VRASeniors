@@ -391,6 +391,18 @@ function addPDF(index) {
       placeholder="PDF Filename"
       data-index="${index}"
     >
+    <input 
+      type="file"
+      class="pdf-file-input border border-gray-300 rounded px-2 py-1 text-sm"
+      accept=".pdf"
+      data-index="${index}"
+    >
+    <button 
+      class="upload-pdf-btn bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded text-sm"
+      data-index="${index}"
+    >
+      Upload
+    </button>
     <button 
       class="remove-pdf-btn bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded text-sm"
       data-index="${index}"
@@ -406,6 +418,19 @@ function addPDF(index) {
   if (removeBtn) {
     removeBtn.addEventListener('click', () => {
       newPdfDiv.remove();
+    });
+  }
+  
+  // Add event listener to upload button
+  const uploadBtn = newPdfDiv.querySelector('.upload-pdf-btn');
+  if (uploadBtn) {
+    uploadBtn.addEventListener('click', () => {
+      const fileInput = newPdfDiv.querySelector('.pdf-file-input');
+      if (fileInput && fileInput.files[0]) {
+        handleFileUpload(fileInput);
+      } else {
+        showMessage('Please select a PDF file first', 'error');
+      }
     });
   }
 }
@@ -439,4 +464,89 @@ function showMessage(message, type) {
       messageDiv.parentNode.removeChild(messageDiv);
     }
   }, 3000);
+}
+
+function handleFileUpload(fileInput) {
+  const file = fileInput.files[0];
+  if (!file) return;
+  
+  const formData = new FormData();
+  formData.append('pdf', file);
+  
+  // Show upload progress
+  const statusDiv = fileInput.closest('.pdf-item').querySelector('.upload-status') || 
+                   fileInput.parentElement.querySelector('.upload-status');
+  if (statusDiv) {
+    statusDiv.textContent = 'Uploading...';
+    statusDiv.className = 'upload-status mt-2 text-sm text-blue-600';
+  }
+  
+  fetch('/api/upload-pdf', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      // Auto-fill filename if empty
+      const filenameInput = fileInput.closest('.pdf-item').querySelector('.pdf-filename-input');
+      if (filenameInput && !filenameInput.value) {
+        filenameInput.value = data.filename;
+      }
+      
+      if (statusDiv) {
+        statusDiv.textContent = 'Upload successful!';
+        statusDiv.className = 'upload-status mt-2 text-sm text-green-600';
+      }
+      showMessage('PDF uploaded successfully!', 'success');
+    } else {
+      throw new Error(data.error || 'Upload failed');
+    }
+  })
+  .catch(error => {
+    if (statusDiv) {
+      statusDiv.textContent = 'Upload failed: ' + error.message;
+      statusDiv.className = 'upload-status mt-2 text-sm text-red-600';
+    }
+    showMessage('Upload failed: ' + error.message, 'error');
+  });
+}
+
+function commitAndPush() {
+  if (!confirm('Commit and push all changes to GitHub? This will make your changes live.')) {
+    return;
+  }
+  
+  const commitBtn = document.querySelector('.commit-push-btn');
+  if (commitBtn) {
+    commitBtn.disabled = true;
+    commitBtn.textContent = 'Committing...';
+  }
+  
+  fetch('/api/commit-push', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      message: 'Update content via admin interface'
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      showMessage('Changes committed and pushed successfully!', 'success');
+    } else {
+      throw new Error(data.error || 'Commit failed');
+    }
+  })
+  .catch(error => {
+    showMessage('Commit failed: ' + error.message, 'error');
+  })
+  .finally(() => {
+    if (commitBtn) {
+      commitBtn.disabled = false;
+      commitBtn.textContent = 'Commit & Push to GitHub';
+    }
+  });
 }

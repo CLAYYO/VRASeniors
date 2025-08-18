@@ -13,115 +13,144 @@ const sectionContent = {
 };
 ---
 
-<footer class="bg-gray-900 text-white" role="contentinfo">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      
+<footer class="bg-gradient-to-r from-blue-900 to-teal-800 text-white" role="contentinfo">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.3) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(34, 197, 94, 0.2) 0%, transparent 50%);"></div>
+  </div>
+  
+  <div class="relative max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <!-- Contact Information -->
-      <div class="lg:col-span-1">
-        <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
-        <div class="space-y-2 text-gray-300">
-          <p>
-            <a 
-              href={`mailto:${config.site.email}`}
-              class="hover:text-white transition-colors"
-            >
-              {config.site.email}
-            </a>
+      <div class="md:col-span-2">
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 shadow-lg">
+          <h3 class="text-lg font-semibold mb-4 text-white flex items-center">
+            <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            Contact Information
+          </h3>
+        <div class="space-y-4">
+          <p class="flex items-start">
+            <svg class="h-5 w-5 mr-3 mt-0.5 text-blue-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span class="text-gray-300 leading-relaxed">Vale Royal Abbey Golf Club, Whitegate, Northwich, Cheshire CW8 2BA</span>
           </p>
-          <p class="text-sm">
-            Vale Royal Abbey Golf Club<br>
-            Seniors Section
+          <p class="flex items-center">
+            <svg class="h-5 w-5 mr-3 text-blue-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            <a href="tel:01606301029" class="text-gray-300 hover:text-blue-300 transition-colors">01606 301029</a>
           </p>
-          <p class="text-sm mt-4">
-            <a href="/" class="hover:text-white transition-colors">
-              ← Back to Seniors Home
-            </a>
+          <p class="flex items-center">
+            <svg class="h-5 w-5 mr-3 text-blue-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <a href="mailto:info@vraseniors.co.uk" class="text-gray-300 hover:text-blue-300 transition-colors">info@vraseniors.co.uk</a>
           </p>
         </div>
+        </div>
       </div>
-      
-      <!-- Golf Section Links -->
+
+      <!-- Quick Links -->
       <div>
-        <h3 class="text-lg font-semibold mb-4">Golf</h3>
-        <ul class="space-y-2 text-gray-300">
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-200">
+          <h4 class="font-semibold text-white mb-3 flex items-center">
+            <svg class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Golf
+          </h4>
+        <ul class="space-y-3">
           {sectionContent.golf.slice(0, 6).map(item => (
             <li>
-              <a 
-                href={`/golf/${item.slug}`}
-                class="text-sm hover:text-white transition-colors"
-              >
+              <a href={`/golf/${item.slug}`} class="text-blue-200 hover:text-white transition-all duration-200 text-sm block py-1 hover:translate-x-1 transform">
                 {item.title.replace('Portfolio – ', '').replace('Administration – ', '')}
               </a>
             </li>
           ))}
           {sectionContent.golf.length > 6 && (
             <li>
-              <a href="/golf" class="text-sm text-green-400 hover:text-green-300 transition-colors">
+              <a href="/golf" class="text-blue-300 hover:text-blue-200 transition-colors">
                 View all Golf pages →
               </a>
             </li>
           )}
         </ul>
+        </div>
       </div>
-      
-      <!-- Portfolio Section Links -->
+
       <div>
-        <h3 class="text-lg font-semibold mb-4">Portfolio</h3>
-        <ul class="space-y-2 text-gray-300">
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-200">
+          <h4 class="font-semibold text-white mb-3 flex items-center">
+            <svg class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Portfolio
+          </h4>
+        <ul class="space-y-3">
           {sectionContent.portfolio.slice(0, 6).map(item => (
             <li>
-              <a 
-                href={`/portfolio/${item.slug}`}
-                class="text-sm hover:text-white transition-colors"
-              >
+              <a href={`/portfolio/${item.slug}`} class="text-blue-200 hover:text-white transition-all duration-200 text-sm block py-1 hover:translate-x-1 transform">
                 {item.title.replace('Portfolio – ', '').replace('Administration – ', '')}
               </a>
             </li>
           ))}
           {sectionContent.portfolio.length > 6 && (
             <li>
-              <a href="/portfolio" class="text-sm text-green-400 hover:text-green-300 transition-colors">
+              <a href="/portfolio" class="text-blue-300 hover:text-blue-200 transition-colors">
                 View all Portfolio pages →
               </a>
             </li>
           )}
         </ul>
+        </div>
       </div>
-      
-      <!-- Administration Section Links -->
+
       <div>
-        <h3 class="text-lg font-semibold mb-4">Administration</h3>
-        <ul class="space-y-2 text-gray-300">
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-200">
+          <h4 class="font-semibold text-white mb-3 flex items-center">
+            <svg class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Administration
+          </h4>
+        <ul class="space-y-3">
           {sectionContent.administration.slice(0, 6).map(item => (
             <li>
-              <a 
-                href={`/administration/${item.slug}`}
-                class="text-sm hover:text-white transition-colors"
-              >
+              <a href={`/administration/${item.slug}`} class="text-blue-200 hover:text-white transition-all duration-200 text-sm block py-1 hover:translate-x-1 transform">
                 {item.title.replace('Portfolio – ', '').replace('Administration – ', '')}
               </a>
             </li>
           ))}
           {sectionContent.administration.length > 6 && (
             <li>
-              <a href="/administration" class="text-sm text-green-400 hover:text-green-300 transition-colors">
+              <a href="/administration" class="text-blue-300 hover:text-blue-200 transition-colors">
                 View all Administration pages →
               </a>
             </li>
           )}
         </ul>
+        </div>
       </div>
     </div>
-    
-    <!-- Bottom Bar -->
-    <div class="mt-8 pt-8 border-t border-gray-800">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="text-sm text-gray-400">
-          <p>&copy; {currentYear} Vale Royal Abbey Golf Club - Seniors Section. All rights reserved.</p>
-        </div>
-        <div class="text-sm text-gray-400 mt-4 md:mt-0">
-          <p>Last updated: {config.site.lastUpdated}</p>
+
+    <!-- Bottom Section -->
+    <div class="mt-12 pt-8 border-t border-blue-800/50">
+      <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <p class="text-gray-400 text-sm text-center md:text-left">
+          © {currentYear} Vale Royal Abbey Golf Club - Seniors Section. All rights reserved.
+        </p>
+        <div class="flex items-center space-x-4">
+          <p class="text-gray-400 text-sm">
+            Last updated: {config.site.lastUpdated}
+          </p>
+          <div class="h-4 w-px bg-gray-600"></div>
+          <p class="text-blue-300 text-sm font-medium">
+            Seniors Section
+          </p>
         </div>
       </div>
     </div>
