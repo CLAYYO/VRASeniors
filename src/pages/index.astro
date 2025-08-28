@@ -50,7 +50,7 @@ const description = 'Welcome to the Vale Royal Abbey Golf Club Seniors\' Section
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {golfContent.map((item, index) => (
-          <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+          <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group cursor-pointer" onclick={`window.location.href='/golf/${item.slug}'`}>
             <div class="p-6">
               <div class="flex items-center justify-between mb-4">
                 <h3 class="text-lg font-bold text-gray-900 group-hover:text-slate-800 transition-colors">
@@ -76,7 +76,7 @@ const description = 'Welcome to the Vale Royal Abbey Golf Club Seniors\' Section
                 )}
                 <a 
                   href={`/golf/${item.slug}`}
-                  class="text-xs font-medium text-slate-600 hover:text-slate-800 transition-colors"
+                  class="inline-block px-3 py-2 text-xs font-medium text-slate-600 hover:text-slate-800 transition-colors hover:bg-slate-50 rounded-md"
                 >
                   Learn More →
                 </a>
@@ -99,7 +99,7 @@ const description = 'Welcome to the Vale Royal Abbey Golf Club Seniors\' Section
         {[...portfolioContent, ...administrationContent].map((item, index) => {
           const section = getSectionFromPage(item.page);
           return (
-            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group cursor-pointer" onclick={`window.location.href='/${section}/${item.slug}'`}>
               <div class="p-8">
                 <div class="flex items-center justify-between mb-6">
                   <span class={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${
@@ -132,7 +132,7 @@ const description = 'Welcome to the Vale Royal Abbey Golf Club Seniors\' Section
                   )}
                   <a 
                     href={`/${section}/${item.slug}`}
-                    class="text-sm font-medium text-slate-600 hover:text-slate-800 transition-colors"
+                    class="inline-block px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-800 transition-colors hover:bg-slate-50 rounded-md"
                   >
                     Learn More →
                   </a>
@@ -154,7 +154,7 @@ const description = 'Welcome to the Vale Royal Abbey Golf Club Seniors\' Section
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {latestUpdates.map((item, index) => (
-            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group cursor-pointer" onclick={`window.location.href='/${getSectionFromPage(item.page)}/${item.slug}'`}>
               <div class="p-6">
                 <div class="flex items-start justify-between mb-4">
                   <div class="flex-1">
@@ -178,7 +178,7 @@ const description = 'Welcome to the Vale Royal Abbey Golf Club Seniors\' Section
                 <div class="flex justify-end">
                   <a 
                     href={`/${getSectionFromPage(item.page)}/${item.slug}`}
-                    class="text-sm font-medium text-slate-600 hover:text-slate-800 transition-colors"
+                    class="inline-block px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-800 transition-colors hover:bg-slate-50 rounded-md"
                   >
                     Read More →
                   </a>

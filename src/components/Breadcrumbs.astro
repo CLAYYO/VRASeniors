@@ -24,7 +24,7 @@ const { breadcrumbs } = Astro.props;
             ) : (
               <a 
                 href={crumb.href} 
-                class="text-green-600 hover:text-green-700 transition-colors"
+                class="text-green-600 hover:text-green-700 hover:underline transition-colors cursor-pointer font-medium"
               >
                 {crumb.label}
               </a>
@@ -37,7 +37,7 @@ const { breadcrumbs } = Astro.props;
       <div class="mt-2">
         <a 
           href="/" 
-          class="inline-flex items-center text-xs text-gray-500 hover:text-green-600 transition-colors"
+          class="inline-flex items-center text-xs text-gray-500 hover:text-green-600 hover:underline transition-colors cursor-pointer"
         >
           <svg class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />

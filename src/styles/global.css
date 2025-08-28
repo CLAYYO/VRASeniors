@@ -219,6 +219,18 @@ a[class*="hover:text-"] {
   text-decoration: none;
 }
 
+/* Ensure breadcrumb links are always clickable and properly styled */
+nav[aria-label="Breadcrumb"] a {
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 10;
+}
+
+nav[aria-label="Breadcrumb"] a:hover {
+  text-decoration: underline;
+}
+
 /* SVG icon sizing */
 svg {
   flex-shrink: 0;

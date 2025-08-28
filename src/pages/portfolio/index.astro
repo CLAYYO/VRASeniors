@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SidebarNav from '../../components/SidebarNav.astro';
+import SectionNav from '../../components/SectionNav.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import { getContentBySection, getBreadcrumbs } from '../../utils/data';
@@ -16,19 +16,19 @@ const description = 'Portfolio information and management details for the Vale R
 ---
 
 <BaseLayout title="Portfolio - VRA Seniors">
-  <div class="lg:flex">
-    <SidebarNav section="portfolio" sectionContent={portfolioContent} />
-    
-    <main class="flex-1 lg:ml-0 min-h-screen bg-gradient-to-br from-blue-50 via-white to-teal-50" role="main">
-        <div class="bg-white/95 backdrop-blur-sm">
-          <PageHeader 
-            title="Portfolio" 
-            description="Management information and operational details for our seniors section"
-          />
-        </div>
+  <div class="bg-white/95 backdrop-blur-sm">
+    <PageHeader 
+      title="Portfolio" 
+      description="Management information and operational details for our seniors section"
+    />
+  </div>
+  
+  <SectionNav section="portfolio" sectionContent={portfolioContent} />
+  
+  <main class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-teal-50" role="main">
         
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-8">
-          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 w-full">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 w-full">
             {portfolioContent.map(item => (
               <div class="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-100 hover:border-blue-300 group hover:scale-[1.02]">
                 <div class="p-6">
@@ -65,16 +65,15 @@ const description = 'Portfolio information and management details for the Vale R
             ))}
           </div>
         
-        {portfolioContent.length === 0 && (
-          <div class="text-center py-12">
-            <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            <h3 class="mt-2 text-sm font-medium text-gray-900">No portfolio content available</h3>
-            <p class="mt-1 text-sm text-gray-500">Portfolio content will appear here when available.</p>
-          </div>
-        )}
-      </div>
-    </main>
-  </div>
+      {portfolioContent.length === 0 && (
+        <div class="text-center py-12">
+          <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          <h3 class="mt-2 text-sm font-medium text-gray-900">No portfolio content available</h3>
+          <p class="mt-1 text-sm text-gray-500">Portfolio content will appear here when available.</p>
+        </div>
+      )}
+    </div>
+  </main>
 </BaseLayout>

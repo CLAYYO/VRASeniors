@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SidebarNav from '../../components/SidebarNav.astro';
+import SectionNav from '../../components/SectionNav.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import { getContentBySection, getBreadcrumbs } from '../../utils/data';
@@ -18,19 +18,17 @@ const description = 'Golf competitions, matches, and activities for the Vale Roy
 <BaseLayout title={title} description={description}>
   <Breadcrumbs breadcrumbs={breadcrumbs} />
   
-  <div class="min-h-screen w-full max-w-full overflow-x-hidden">
-    <div class="lg:flex w-full max-w-full">
-      <SidebarNav section="golf" sectionContent={golfContent} />
-      
-      <main class="flex-1 lg:ml-0 w-full max-w-full min-w-0" role="main">
-        <div class="bg-white/95 backdrop-blur-sm">
-          <PageHeader 
-            title="Golf" 
-            description="Competitions, matches, and golfing activities for our seniors section"
-          />
-        </div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="bg-white/95 backdrop-blur-sm">
+    <PageHeader 
+      title="Golf" 
+      description="Competitions, matches, and golfing activities for our seniors section"
+    />
+  </div>
+  
+  <SectionNav section="golf" sectionContent={golfContent} />
+  
+  <main class="min-h-screen" role="main">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 w-full">
             {golfContent.map(item => (
               <div class="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-100 hover:border-blue-300 group hover:scale-[1.02]">
@@ -68,16 +66,15 @@ const description = 'Golf competitions, matches, and activities for the Vale Roy
             ))}
           </div>
         
-        {golfContent.length === 0 && (
-          <div class="text-center py-12">
-            <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            <h3 class="mt-2 text-sm font-medium text-gray-900">No golf content available</h3>
-            <p class="mt-1 text-sm text-gray-500">Golf content will appear here when available.</p>
-          </div>
-        )}
-      </div>
-    </main>
-  </div>
+      {golfContent.length === 0 && (
+        <div class="text-center py-12">
+          <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          <h3 class="mt-2 text-sm font-medium text-gray-900">No golf content available</h3>
+          <p class="mt-1 text-sm text-gray-500">Golf content will appear here when available.</p>
+        </div>
+      )}
+    </div>
+  </main>
 </BaseLayout>

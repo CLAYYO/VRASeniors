@@ -12,6 +12,7 @@
     "@astrojs/cloudflare": "^12.6.3",
     "@astrojs/sitemap": "^3.4.2",
     "@astrojs/tailwind": "^6.0.2",
+    "@aws-sdk/client-ses": "^3.709.0",
     "astro": "^5.12.9",
     "formidable": "^3.5.4",
     "fuse.js": "^7.1.0",

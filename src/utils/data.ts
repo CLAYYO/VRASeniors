@@ -160,6 +160,17 @@ export function searchContent(query: string): ContentItem[] {
 export function getBreadcrumbs(section?: string, pageTitle?: string): Array<{label: string, href: string}> {
   const breadcrumbs = [{ label: 'Home', href: '/' }];
   
+  // Handle special pages
+  if (section === 'contact') {
+    breadcrumbs.push({ label: 'Contact Us', href: '/contact' });
+    return breadcrumbs;
+  }
+  
+  if (section === 'hall-of-fame') {
+    breadcrumbs.push({ label: 'Hall of Fame', href: '/hall-of-fame' });
+    return breadcrumbs;
+  }
+  
   if (section) {
     const sectionLabel = section.charAt(0).toUpperCase() + section.slice(1);
     breadcrumbs.push({ label: sectionLabel, href: `/${section}` });

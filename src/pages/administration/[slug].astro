@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SidebarNav from '../../components/SidebarNav.astro';
+import SectionNav from '../../components/SectionNav.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import DocList from '../../components/DocList.astro';
@@ -30,16 +30,17 @@ const description = item.content ? sanitizeContent(item.content).substring(0, 16
 <BaseLayout title={title} description={description}>
   <Breadcrumbs breadcrumbs={breadcrumbs} />
   
-  <div class="bg-gray-50 min-h-screen">
-    <SidebarNav section="administration" sectionContent={administrationContent} currentSlug={item.slug} />
-    
-    <main class="w-full lg:ml-64" role="main">
-      <PageHeader 
-        title={item.title.replace('Administration – ', '')} 
-        description={item.content ? sanitizeContent(item.content).substring(0, 200) : undefined}
-      />
-      
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-8">
+  <div class="bg-white/95 backdrop-blur-sm">
+    <PageHeader 
+      title={item.title.replace('Administration – ', '')} 
+      description={item.content ? sanitizeContent(item.content).substring(0, 200) : undefined}
+    />
+  </div>
+  
+  <SectionNav section="administration" sectionContent={administrationContent} currentSlug={item.slug} />
+  
+  <main class="bg-gray-50 min-h-screen" role="main">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-8">
         {item.content ? (
           <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 mb-8">
             <div class="prose prose-lg max-w-none" set:html={item.content} />
@@ -52,19 +53,18 @@ const description = item.content ? sanitizeContent(item.content).substring(0, 16
           </div>
         )}
         
-        {item.pdfs && item.pdfs.length > 0 && (
-          <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-            <DocList 
-              documents={item.pdfs} 
-              title="Related Documents" 
-              showFilters={item.pdfs.length > 5}
-              gridView={false}
-            />
-          </div>
-        )}
-      </div>
-    </main>
-  </div>
+      {item.pdfs && item.pdfs.length > 0 && (
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+          <DocList 
+            documents={item.pdfs} 
+            title="Related Documents" 
+            showFilters={item.pdfs.length > 5}
+            gridView={false}
+          />
+        </div>
+      )}
+    </div>
+  </main>
 </BaseLayout>
 
 <style>
